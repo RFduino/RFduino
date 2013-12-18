@@ -1,0 +1,367 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA07EB7D176BF80500AB755D /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07EB7C176BF80500AB755D /* CustomCellBackground.m */; };
+		AA9B326417B19E7700623C09 /* UIImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = AA9B326317B19E7700623C09 /* UIImage+Extras.m */; };
+		AA9B326717B2930C00623C09 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B326517B2930C00623C09 /* icon-72.png */; };
+		AA9B326817B2930C00623C09 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B326617B2930C00623C09 /* icon.png */; };
+		AA9B326A17B2945300623C09 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = AA9B326917B2945300623C09 /* icon-144.png */; };
+		AAC4277816C9D86000149784 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4277716C9D86000149784 /* UIKit.framework */; };
+		AAC4277A16C9D86000149784 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4277916C9D86000149784 /* Foundation.framework */; };
+		AAC4277C16C9D86000149784 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4277B16C9D86000149784 /* CoreGraphics.framework */; };
+		AAC4278216C9D86000149784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAC4278016C9D86000149784 /* InfoPlist.strings */; };
+		AAC4278416C9D86000149784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4278316C9D86000149784 /* main.m */; };
+		AAC4278A16C9D86000149784 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC4278916C9D86000149784 /* Default.png */; };
+		AAC4278C16C9D86000149784 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC4278B16C9D86000149784 /* Default@2x.png */; };
+		AAC4278E16C9D86000149784 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC4278D16C9D86000149784 /* Default-568h@2x.png */; };
+		AAC4279F16C9D86C00149784 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4279716C9D86C00149784 /* RFduino.m */; };
+		AAC427A016C9D86C00149784 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4279A16C9D86C00149784 /* RfduinoManager.m */; };
+		AAC427A116C9D86C00149784 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4279D16C9D86C00149784 /* ScanViewController.m */; };
+		AAC427AC16C9D8EB00149784 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427A716C9D8EB00149784 /* AppViewController.m */; };
+		AAC427AD16C9D8EB00149784 /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC427A816C9D8EB00149784 /* AppViewController.xib */; };
+		AAC427AF16C9D8EB00149784 /* colorWheel1.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC427AB16C9D8EB00149784 /* colorWheel1.png */; };
+		AAC427B116C9DC3E00149784 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC427B016C9DC3E00149784 /* CoreBluetooth.framework */; };
+		AAC428C316C9FE3600149784 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC428C216C9FE3600149784 /* AppDelegate.m */; };
+		AAE5C88416CDCBA1001005E3 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAE5C88316CDCBA1001005E3 /* icon@2x.png */; };
+		AAEE69D316D3F572005A5AEA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEE69D216D3F572005A5AEA /* QuartzCore.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA07EB7B176BF80500AB755D /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
+		AA07EB7C176BF80500AB755D /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
+		AA9B326217B19E7700623C09 /* UIImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extras.h"; sourceTree = "<group>"; };
+		AA9B326317B19E7700623C09 /* UIImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extras.m"; sourceTree = "<group>"; };
+		AA9B326517B2930C00623C09 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		AA9B326617B2930C00623C09 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		AA9B326917B2945300623C09 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
+		AAC4277316C9D86000149784 /* rfduinoColorWheel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rfduinoColorWheel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC4277716C9D86000149784 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AAC4277916C9D86000149784 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAC4277B16C9D86000149784 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AAC4277F16C9D86000149784 /* rfduinoColorWheel-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rfduinoColorWheel-Info.plist"; sourceTree = "<group>"; };
+		AAC4278116C9D86000149784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAC4278316C9D86000149784 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AAC4278516C9D86000149784 /* rfduinoColorWheel-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rfduinoColorWheel-Prefix.pch"; sourceTree = "<group>"; };
+		AAC4278916C9D86000149784 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AAC4278B16C9D86000149784 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AAC4278D16C9D86000149784 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AAC4279616C9D86C00149784 /* RFduino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduino.h; sourceTree = "<group>"; };
+		AAC4279716C9D86C00149784 /* RFduino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFduino.m; sourceTree = "<group>"; };
+		AAC4279816C9D86C00149784 /* RFduinoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoDelegate.h; sourceTree = "<group>"; };
+		AAC4279916C9D86C00149784 /* RfduinoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RfduinoManager.h; sourceTree = "<group>"; };
+		AAC4279A16C9D86C00149784 /* RfduinoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RfduinoManager.m; sourceTree = "<group>"; };
+		AAC4279B16C9D86C00149784 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoManagerDelegate.h; sourceTree = "<group>"; };
+		AAC4279C16C9D86C00149784 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		AAC4279D16C9D86C00149784 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		AAC427A616C9D8EB00149784 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
+		AAC427A716C9D8EB00149784 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
+		AAC427A816C9D8EB00149784 /* AppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppViewController.xib; sourceTree = "<group>"; };
+		AAC427AB16C9D8EB00149784 /* colorWheel1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = colorWheel1.png; sourceTree = "<group>"; };
+		AAC427B016C9DC3E00149784 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		AAC428C116C9FE3600149784 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AAC428C216C9FE3600149784 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AAE5C88316CDCBA1001005E3 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		AAEE69D216D3F572005A5AEA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAC4277016C9D86000149784 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAEE69D316D3F572005A5AEA /* QuartzCore.framework in Frameworks */,
+				AAC427B116C9DC3E00149784 /* CoreBluetooth.framework in Frameworks */,
+				AAC4277816C9D86000149784 /* UIKit.framework in Frameworks */,
+				AAC4277A16C9D86000149784 /* Foundation.framework in Frameworks */,
+				AAC4277C16C9D86000149784 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAC4276816C9D86000149784 = {
+			isa = PBXGroup;
+			children = (
+				AA9B326917B2945300623C09 /* icon-144.png */,
+				AA9B326517B2930C00623C09 /* icon-72.png */,
+				AA9B326617B2930C00623C09 /* icon.png */,
+				AAE5C88316CDCBA1001005E3 /* icon@2x.png */,
+				AAC4279416C9D86C00149784 /* rfduino */,
+				AAC4277D16C9D86000149784 /* rfduinoColorWheel */,
+				AAC4277616C9D86000149784 /* Frameworks */,
+				AAC4277416C9D86000149784 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAC4277416C9D86000149784 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAC4277316C9D86000149784 /* rfduinoColorWheel.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAC4277616C9D86000149784 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAEE69D216D3F572005A5AEA /* QuartzCore.framework */,
+				AAC427B016C9DC3E00149784 /* CoreBluetooth.framework */,
+				AAC4277716C9D86000149784 /* UIKit.framework */,
+				AAC4277916C9D86000149784 /* Foundation.framework */,
+				AAC4277B16C9D86000149784 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAC4277D16C9D86000149784 /* rfduinoColorWheel */ = {
+			isa = PBXGroup;
+			children = (
+				AAC427A616C9D8EB00149784 /* AppViewController.h */,
+				AAC427A716C9D8EB00149784 /* AppViewController.m */,
+				AAC427A816C9D8EB00149784 /* AppViewController.xib */,
+				AA9B326217B19E7700623C09 /* UIImage+Extras.h */,
+				AA9B326317B19E7700623C09 /* UIImage+Extras.m */,
+				AAC427AB16C9D8EB00149784 /* colorWheel1.png */,
+				AAC4277E16C9D86000149784 /* Supporting Files */,
+			);
+			path = rfduinoColorWheel;
+			sourceTree = "<group>";
+		};
+		AAC4277E16C9D86000149784 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAC4277F16C9D86000149784 /* rfduinoColorWheel-Info.plist */,
+				AAC4278016C9D86000149784 /* InfoPlist.strings */,
+				AAC4278316C9D86000149784 /* main.m */,
+				AAC4278516C9D86000149784 /* rfduinoColorWheel-Prefix.pch */,
+				AAC4278916C9D86000149784 /* Default.png */,
+				AAC4278B16C9D86000149784 /* Default@2x.png */,
+				AAC4278D16C9D86000149784 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAC4279416C9D86C00149784 /* rfduino */ = {
+			isa = PBXGroup;
+			children = (
+				AAC428C116C9FE3600149784 /* AppDelegate.h */,
+				AAC428C216C9FE3600149784 /* AppDelegate.m */,
+				AAC4279616C9D86C00149784 /* RFduino.h */,
+				AAC4279716C9D86C00149784 /* RFduino.m */,
+				AAC4279816C9D86C00149784 /* RFduinoDelegate.h */,
+				AAC4279916C9D86C00149784 /* RfduinoManager.h */,
+				AAC4279A16C9D86C00149784 /* RfduinoManager.m */,
+				AAC4279B16C9D86C00149784 /* RFduinoManagerDelegate.h */,
+				AAC4279C16C9D86C00149784 /* ScanViewController.h */,
+				AAC4279D16C9D86C00149784 /* ScanViewController.m */,
+				AA07EB7B176BF80500AB755D /* CustomCellBackground.h */,
+				AA07EB7C176BF80500AB755D /* CustomCellBackground.m */,
+			);
+			name = rfduino;
+			path = ../rfduino;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAC4277216C9D86000149784 /* rfduinoColorWheel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAC4279116C9D86000149784 /* Build configuration list for PBXNativeTarget "rfduinoColorWheel" */;
+			buildPhases = (
+				AAC4276F16C9D86000149784 /* Sources */,
+				AAC4277016C9D86000149784 /* Frameworks */,
+				AAC4277116C9D86000149784 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rfduinoColorWheel;
+			productName = rfduinoColorWheel;
+			productReference = AAC4277316C9D86000149784 /* rfduinoColorWheel.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAC4276A16C9D86000149784 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = OpenSourceRF;
+			};
+			buildConfigurationList = AAC4276D16C9D86000149784 /* Build configuration list for PBXProject "rfduinoColorWheel" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AAC4276816C9D86000149784;
+			productRefGroup = AAC4277416C9D86000149784 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAC4277216C9D86000149784 /* rfduinoColorWheel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAC4277116C9D86000149784 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAC4278216C9D86000149784 /* InfoPlist.strings in Resources */,
+				AAC4278A16C9D86000149784 /* Default.png in Resources */,
+				AAC4278C16C9D86000149784 /* Default@2x.png in Resources */,
+				AAC4278E16C9D86000149784 /* Default-568h@2x.png in Resources */,
+				AAC427AD16C9D8EB00149784 /* AppViewController.xib in Resources */,
+				AAC427AF16C9D8EB00149784 /* colorWheel1.png in Resources */,
+				AAE5C88416CDCBA1001005E3 /* icon@2x.png in Resources */,
+				AA9B326717B2930C00623C09 /* icon-72.png in Resources */,
+				AA9B326817B2930C00623C09 /* icon.png in Resources */,
+				AA9B326A17B2945300623C09 /* icon-144.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAC4276F16C9D86000149784 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAC4278416C9D86000149784 /* main.m in Sources */,
+				AAC4279F16C9D86C00149784 /* RFduino.m in Sources */,
+				AAC427A016C9D86C00149784 /* RfduinoManager.m in Sources */,
+				AAC427A116C9D86C00149784 /* ScanViewController.m in Sources */,
+				AAC427AC16C9D8EB00149784 /* AppViewController.m in Sources */,
+				AAC428C316C9FE3600149784 /* AppDelegate.m in Sources */,
+				AA07EB7D176BF80500AB755D /* CustomCellBackground.m in Sources */,
+				AA9B326417B19E7700623C09 /* UIImage+Extras.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AAC4278016C9D86000149784 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAC4278116C9D86000149784 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAC4278F16C9D86000149784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AAC4279016C9D86000149784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAC4279216C9D86000149784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rfduinoColorWheel/rfduinoColorWheel-Prefix.pch";
+				INFOPLIST_FILE = "rfduinoColorWheel/rfduinoColorWheel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AAC4279316C9D86000149784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rfduinoColorWheel/rfduinoColorWheel-Prefix.pch";
+				INFOPLIST_FILE = "rfduinoColorWheel/rfduinoColorWheel-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAC4276D16C9D86000149784 /* Build configuration list for PBXProject "rfduinoColorWheel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAC4278F16C9D86000149784 /* Debug */,
+				AAC4279016C9D86000149784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAC4279116C9D86000149784 /* Build configuration list for PBXNativeTarget "rfduinoColorWheel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAC4279216C9D86000149784 /* Debug */,
+				AAC4279316C9D86000149784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAC4276A16C9D86000149784 /* Project object */;
+}

@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring Map SPI
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RFduinoBLE	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+deviceName	KEYWORD2
+advertisementData	KEYWORD2
+advertisementInterval	KEYWORD2
+txPowerLevel	KEYWORD2
+
+begin	KEYWORD2
+end KEYWORD2
+send	KEYWORD2
+
+RFduinoBLE_onAdvertisement	KEYWORD2
+RFduinoBLE_onRssi		KEYWORD2
+RFduinoBLE_onConnect	KEYWORD2
+RFduinoBLE_onDisconnect	KEYQORD2
+RFduinoBLE_onReceive	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################

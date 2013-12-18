@@ -1,0 +1,365 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA07EB7A176BA47F00AB755D /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07EB79176BA47F00AB755D /* CustomCellBackground.m */; };
+		AA4D789117DFBCF70029ACE0 /* off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA4D788F17DFBCF70029ACE0 /* off.jpg */; };
+		AA4D789217DFBCF70029ACE0 /* on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA4D789017DFBCF70029ACE0 /* on.jpg */; };
+		AA4D78A117E0052C0029ACE0 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D789D17E0052C0029ACE0 /* icon-72.png */; };
+		AA4D78A217E0052C0029ACE0 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D789E17E0052C0029ACE0 /* icon-144.png */; };
+		AA4D78A317E0052C0029ACE0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D789F17E0052C0029ACE0 /* icon.png */; };
+		AA4D78A417E0052C0029ACE0 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D78A017E0052C0029ACE0 /* icon@2x.png */; };
+		AA6DEC4416D561CD00E83C0F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA6DEC4316D561CD00E83C0F /* QuartzCore.framework */; };
+		AAC4273716C9D4A500149784 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4273616C9D4A500149784 /* UIKit.framework */; };
+		AAC4273916C9D4A500149784 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4273816C9D4A500149784 /* Foundation.framework */; };
+		AAC4273B16C9D4A500149784 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4273A16C9D4A500149784 /* CoreGraphics.framework */; };
+		AAC4274116C9D4A500149784 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AAC4273F16C9D4A500149784 /* InfoPlist.strings */; };
+		AAC4274316C9D4A500149784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4274216C9D4A500149784 /* main.m */; };
+		AAC4274916C9D4A500149784 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC4274816C9D4A500149784 /* Default.png */; };
+		AAC4274B16C9D4A500149784 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC4274A16C9D4A500149784 /* Default@2x.png */; };
+		AAC4274D16C9D4A500149784 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAC4274C16C9D4A500149784 /* Default-568h@2x.png */; };
+		AAC4276416C9D52700149784 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4276216C9D52700149784 /* AppViewController.m */; };
+		AAC4276516C9D52700149784 /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC4276316C9D52700149784 /* AppViewController.xib */; };
+		AAC4276716C9D6B200149784 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4276616C9D6B200149784 /* CoreBluetooth.framework */; };
+		AAC427C216C9DC9B00149784 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427BA16C9DC9B00149784 /* RFduino.m */; };
+		AAC427C316C9DC9B00149784 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427BD16C9DC9B00149784 /* RfduinoManager.m */; };
+		AAC427C416C9DC9B00149784 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427C016C9DC9B00149784 /* ScanViewController.m */; };
+		AAC428BB16C9FE1300149784 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC428BA16C9FE1300149784 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA07EB78176BA47F00AB755D /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
+		AA07EB79176BA47F00AB755D /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
+		AA4D788F17DFBCF70029ACE0 /* off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = off.jpg; path = rfduinoLedButton/off.jpg; sourceTree = SOURCE_ROOT; };
+		AA4D789017DFBCF70029ACE0 /* on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = on.jpg; path = rfduinoLedButton/on.jpg; sourceTree = SOURCE_ROOT; };
+		AA4D789D17E0052C0029ACE0 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		AA4D789E17E0052C0029ACE0 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
+		AA4D789F17E0052C0029ACE0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		AA4D78A017E0052C0029ACE0 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		AA6DEC4316D561CD00E83C0F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AAC4273216C9D4A500149784 /* rfduinoLedButton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rfduinoLedButton.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAC4273616C9D4A500149784 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		AAC4273816C9D4A500149784 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		AAC4273A16C9D4A500149784 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AAC4273E16C9D4A500149784 /* rfduinoLedButton-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rfduinoLedButton-Info.plist"; sourceTree = "<group>"; };
+		AAC4274016C9D4A500149784 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AAC4274216C9D4A500149784 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AAC4274416C9D4A500149784 /* rfduinoLedButton-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rfduinoLedButton-Prefix.pch"; sourceTree = "<group>"; };
+		AAC4274816C9D4A500149784 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AAC4274A16C9D4A500149784 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		AAC4274C16C9D4A500149784 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AAC4276116C9D52700149784 /* AppViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppViewController.h; sourceTree = "<group>"; };
+		AAC4276216C9D52700149784 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
+		AAC4276316C9D52700149784 /* AppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppViewController.xib; sourceTree = "<group>"; };
+		AAC4276616C9D6B200149784 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		AAC427B916C9DC9B00149784 /* RFduino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduino.h; sourceTree = "<group>"; };
+		AAC427BA16C9DC9B00149784 /* RFduino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFduino.m; sourceTree = "<group>"; };
+		AAC427BB16C9DC9B00149784 /* RFduinoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoDelegate.h; sourceTree = "<group>"; };
+		AAC427BC16C9DC9B00149784 /* RfduinoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RfduinoManager.h; sourceTree = "<group>"; };
+		AAC427BD16C9DC9B00149784 /* RfduinoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RfduinoManager.m; sourceTree = "<group>"; };
+		AAC427BE16C9DC9B00149784 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoManagerDelegate.h; sourceTree = "<group>"; };
+		AAC427BF16C9DC9B00149784 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		AAC427C016C9DC9B00149784 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		AAC428B916C9FE1300149784 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AAC428BA16C9FE1300149784 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAC4272F16C9D4A500149784 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA6DEC4416D561CD00E83C0F /* QuartzCore.framework in Frameworks */,
+				AAC4276716C9D6B200149784 /* CoreBluetooth.framework in Frameworks */,
+				AAC4273716C9D4A500149784 /* UIKit.framework in Frameworks */,
+				AAC4273916C9D4A500149784 /* Foundation.framework in Frameworks */,
+				AAC4273B16C9D4A500149784 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAC4272716C9D4A500149784 = {
+			isa = PBXGroup;
+			children = (
+				AA4D789D17E0052C0029ACE0 /* icon-72.png */,
+				AA4D789E17E0052C0029ACE0 /* icon-144.png */,
+				AA4D789F17E0052C0029ACE0 /* icon.png */,
+				AA4D78A017E0052C0029ACE0 /* icon@2x.png */,
+				AA4D789017DFBCF70029ACE0 /* on.jpg */,
+				AA4D788F17DFBCF70029ACE0 /* off.jpg */,
+				AAC427B716C9DC9B00149784 /* rfduino */,
+				AAC4273C16C9D4A500149784 /* rfduinoLedButton */,
+				AAC4273516C9D4A500149784 /* Frameworks */,
+				AAC4273316C9D4A500149784 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAC4273316C9D4A500149784 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAC4273216C9D4A500149784 /* rfduinoLedButton.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAC4273516C9D4A500149784 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA6DEC4316D561CD00E83C0F /* QuartzCore.framework */,
+				AAC4276616C9D6B200149784 /* CoreBluetooth.framework */,
+				AAC4273616C9D4A500149784 /* UIKit.framework */,
+				AAC4273816C9D4A500149784 /* Foundation.framework */,
+				AAC4273A16C9D4A500149784 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AAC4273C16C9D4A500149784 /* rfduinoLedButton */ = {
+			isa = PBXGroup;
+			children = (
+				AAC4276116C9D52700149784 /* AppViewController.h */,
+				AAC4276216C9D52700149784 /* AppViewController.m */,
+				AAC4276316C9D52700149784 /* AppViewController.xib */,
+				AAC4273D16C9D4A500149784 /* Supporting Files */,
+			);
+			path = rfduinoLedButton;
+			sourceTree = "<group>";
+		};
+		AAC4273D16C9D4A500149784 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AAC4273E16C9D4A500149784 /* rfduinoLedButton-Info.plist */,
+				AAC4273F16C9D4A500149784 /* InfoPlist.strings */,
+				AAC4274216C9D4A500149784 /* main.m */,
+				AAC4274416C9D4A500149784 /* rfduinoLedButton-Prefix.pch */,
+				AAC4274816C9D4A500149784 /* Default.png */,
+				AAC4274A16C9D4A500149784 /* Default@2x.png */,
+				AAC4274C16C9D4A500149784 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AAC427B716C9DC9B00149784 /* rfduino */ = {
+			isa = PBXGroup;
+			children = (
+				AAC428B916C9FE1300149784 /* AppDelegate.h */,
+				AAC428BA16C9FE1300149784 /* AppDelegate.m */,
+				AAC427B916C9DC9B00149784 /* RFduino.h */,
+				AAC427BA16C9DC9B00149784 /* RFduino.m */,
+				AAC427BB16C9DC9B00149784 /* RFduinoDelegate.h */,
+				AAC427BC16C9DC9B00149784 /* RfduinoManager.h */,
+				AAC427BD16C9DC9B00149784 /* RfduinoManager.m */,
+				AAC427BE16C9DC9B00149784 /* RFduinoManagerDelegate.h */,
+				AAC427BF16C9DC9B00149784 /* ScanViewController.h */,
+				AAC427C016C9DC9B00149784 /* ScanViewController.m */,
+				AA07EB78176BA47F00AB755D /* CustomCellBackground.h */,
+				AA07EB79176BA47F00AB755D /* CustomCellBackground.m */,
+			);
+			name = rfduino;
+			path = ../rfduino;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAC4273116C9D4A500149784 /* rfduinoLedButton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAC4275016C9D4A500149784 /* Build configuration list for PBXNativeTarget "rfduinoLedButton" */;
+			buildPhases = (
+				AAC4272E16C9D4A500149784 /* Sources */,
+				AAC4272F16C9D4A500149784 /* Frameworks */,
+				AAC4273016C9D4A500149784 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rfduinoLedButton;
+			productName = rfduinoLedButton;
+			productReference = AAC4273216C9D4A500149784 /* rfduinoLedButton.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAC4272916C9D4A500149784 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = OpenSourceRF;
+			};
+			buildConfigurationList = AAC4272C16C9D4A500149784 /* Build configuration list for PBXProject "rfduinoLedButton" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AAC4272716C9D4A500149784;
+			productRefGroup = AAC4273316C9D4A500149784 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAC4273116C9D4A500149784 /* rfduinoLedButton */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAC4273016C9D4A500149784 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAC4274116C9D4A500149784 /* InfoPlist.strings in Resources */,
+				AAC4274916C9D4A500149784 /* Default.png in Resources */,
+				AAC4274B16C9D4A500149784 /* Default@2x.png in Resources */,
+				AAC4274D16C9D4A500149784 /* Default-568h@2x.png in Resources */,
+				AAC4276516C9D52700149784 /* AppViewController.xib in Resources */,
+				AA4D789117DFBCF70029ACE0 /* off.jpg in Resources */,
+				AA4D789217DFBCF70029ACE0 /* on.jpg in Resources */,
+				AA4D78A117E0052C0029ACE0 /* icon-72.png in Resources */,
+				AA4D78A217E0052C0029ACE0 /* icon-144.png in Resources */,
+				AA4D78A317E0052C0029ACE0 /* icon.png in Resources */,
+				AA4D78A417E0052C0029ACE0 /* icon@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAC4272E16C9D4A500149784 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAC4274316C9D4A500149784 /* main.m in Sources */,
+				AAC4276416C9D52700149784 /* AppViewController.m in Sources */,
+				AAC427C216C9DC9B00149784 /* RFduino.m in Sources */,
+				AAC427C316C9DC9B00149784 /* RfduinoManager.m in Sources */,
+				AAC427C416C9DC9B00149784 /* ScanViewController.m in Sources */,
+				AAC428BB16C9FE1300149784 /* AppDelegate.m in Sources */,
+				AA07EB7A176BA47F00AB755D /* CustomCellBackground.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		AAC4273F16C9D4A500149784 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AAC4274016C9D4A500149784 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AAC4274E16C9D4A500149784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AAC4274F16C9D4A500149784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AAC4275116C9D4A500149784 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rfduinoLedButton/rfduinoLedButton-Prefix.pch";
+				INFOPLIST_FILE = "rfduinoLedButton/rfduinoLedButton-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		AAC4275216C9D4A500149784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rfduinoLedButton/rfduinoLedButton-Prefix.pch";
+				INFOPLIST_FILE = "rfduinoLedButton/rfduinoLedButton-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAC4272C16C9D4A500149784 /* Build configuration list for PBXProject "rfduinoLedButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAC4274E16C9D4A500149784 /* Debug */,
+				AAC4274F16C9D4A500149784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAC4275016C9D4A500149784 /* Build configuration list for PBXNativeTarget "rfduinoLedButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAC4275116C9D4A500149784 /* Debug */,
+				AAC4275216C9D4A500149784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAC4272916C9D4A500149784 /* Project object */;
+}

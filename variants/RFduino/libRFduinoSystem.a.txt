@@ -1,0 +1,49 @@
+
+startup_nrf51822.o:
+00000000 W ADC_IRQHandler
+00000000 W CCM_AAR_IRQHandler
+00000000 T Dummy_Handler
+00000000 W ECB_IRQHandler
+00000000 W GPIOTE_IRQHandler
+00000000 W HardFault_Handler
+00000000 W NMI_Handler
+00000000 W POWER_CLOCK_IRQHandler
+00000000 W PendSV_Handler
+00000000 W QDEC_IRQHandler
+00000000 W RADIO_IRQHandler
+00000000 W RNG_IRQHandler
+00000000 W RTC0_IRQHandler
+00000000 W RTC1_IRQHandler
+00000000 T Reset_Handler
+00000000 W SPI0_TWI0_IRQHandler
+00000000 W SPI1_TWI1_IRQHandler
+00000000 W SVC_Handler
+00000000 W SWI0_IRQHandler
+00000000 W SWI1_IRQHandler
+00000000 W SWI2_IRQHandler
+00000000 W SWI3_IRQHandler
+00000000 W SWI4_IRQHandler
+00000000 W SWI5_IRQHandler
+00000000 W SysTick_Handler
+         U SystemInit
+00000000 W TEMP_IRQHandler
+00000000 W TIMER0_IRQHandler
+00000000 W TIMER1_IRQHandler
+00000000 W TIMER2_IRQHandler
+00000000 W UART0_IRQHandler
+00000000 W WDT_IRQHandler
+00000000 W WUCOMP_IRQHandler
+         U __libc_init_array
+         U _erelocate
+         U _estack
+         U _etext
+         U _ezero
+         U _srelocate
+         U _szero
+00000000 R exception_table
+         U main
+
+system_nrf51.o:
+00000000 D SystemCoreClock
+00000000 T SystemCoreClockUpdate
+00000000 T SystemInit

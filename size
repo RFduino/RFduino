@@ -1,0 +1,8 @@
+#!/bin/bash
+size=0
+while read i j k; do
+  if [ "$i" == ".text" ] || [ "$i" == ".ARM.exidx" ] || [ "$i" == ".relocate" ] ; then
+    size=$((size+j))
+  fi
+done < <($@)
+echo size=$size

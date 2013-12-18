@@ -1,0 +1,46 @@
+#######################################
+# Syntax Coloring Map SPI
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+RFduino_ULPDelay	KEYWORD2
+RFduino_pinWake	KEYWORD2
+RFduino_pinWoke	KEYWORD2
+RFduino_resetPinWake	KEYWORD2
+RFduino_pinWakeCallback	KEYWORD2
+RFduino_systemReset	KEYWORD2
+RFduino_systemOff	KEYWORD2
+RFduino_temperature	KEYWORD2
+attachPinInterrupt	KEYWORD2
+detachPinInterrupt	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+INPUT_NOPULL	LITERAL1
+INPUT_PULLDOWN	LITERAL1
+OUTPUT_S0S1	LITERAL1
+OUTPUT_H0S1	LITERAL1
+OUTPUT_S0H1	LITERAL1
+OUTPUT_H0H1	LITERAL1
+OUTPUT_D0S1	LITERAL1
+OUTPUT_D0H1	LITERAL1
+OUTPUT_S0D1	LITERAL1
+OUTPUT_H0D1	LITERAL1
+
+DISABLE	LITERAL1
+
+MILLISECONDS	LITERAL1
+SECONDS	LITERAL1
+MINUTES	LITERAL1
+HOURS	LITERAL1
+DAYS	LITERAL1
+INFINITE	LITERAL1
