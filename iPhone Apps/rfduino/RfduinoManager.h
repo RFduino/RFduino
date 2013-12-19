@@ -25,11 +25,16 @@
 */
 
 #import <Foundation/Foundation.h>
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
 #import <CoreBluetooth/CoreBluetooth.h>
+#elif TARGET_OS_MAC
+#import <IOBluetooth/IOBluetooth.h>
+#endif
 
 #import "RFduinoManagerDelegate.h"
 
-@interface RFduinoManager : NSObject <CBCentralManagerDelegate, UIAlertViewDelegate>
+@interface RFduinoManager : NSObject <CBCentralManagerDelegate>
 {
     CBCentralManager *central;
 }
