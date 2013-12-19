@@ -97,14 +97,18 @@ static CBUUID *service_uuid;
             message = @"Bluetooth state is unknown.";
             
     }
-    
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth LE Support"
                                                     message:message
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
-    
+
+#endif
+
     return NO;
 }
 
@@ -188,6 +192,8 @@ static CBUUID *service_uuid;
     
     if (error.code) {
         cancelBlock = block;
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Peripheral Disconnected with Error"
                                                         message:error.description
@@ -195,6 +201,9 @@ static CBUUID *service_uuid;
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
+        
+#endif
+        
     }
     else
         block();
@@ -273,13 +282,18 @@ static CBUUID *service_uuid;
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"didFailToConnectPeripheral");
-    
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connect Failed"
                                                     message:error.description
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+
+#endif
+
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals
@@ -298,12 +312,16 @@ static CBUUID *service_uuid;
 
 #pragma mark - UIAlertViewDelegate methods
 
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger) buttonIndex
 {
     if (buttonIndex == 0) {
         cancelBlock();
     }
 }
+
+#endif
 
 #pragma mark - Rfduino methods
 
