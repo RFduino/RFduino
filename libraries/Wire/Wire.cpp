@@ -183,9 +183,7 @@ bool TwoWire::twi_master_init(void)
     twi->PSELSCL = SCL_pin_number;
     twi->PSELSDA = SDA_pin_number;
     twi->FREQUENCY = TWI_FREQUENCY_FREQUENCY_K100 << TWI_FREQUENCY_FREQUENCY_Pos;
-    NRF_PPI->CH[7].EEP = (uint32_t)&twi->EVENTS_BB;
-    NRF_PPI->CH[7].TEP = (uint32_t)&twi->TASKS_SUSPEND;
-    NRF_PPI->CHENCLR = PPI_CHENCLR_CH7_Msk;
+    rfduino_ppi_channel_unassign(7);
     twi->ENABLE = TWI_ENABLE_ENABLE_Enabled << TWI_ENABLE_ENABLE_Pos;
 
     return twi_master_clear_bus();
@@ -204,13 +202,12 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
 
     if ((data_length == 1) && (issue_stop_condition == 1))
     {
-		NRF_PPI->CH[7].TEP = (uint32_t)&twi->TASKS_STOP;
+        rfduino_ppi_channel_assign(7, &twi->EVENTS_BB, &twi->TASKS_STOP);
     }
     else
     {
-        NRF_PPI->CH[7].TEP = (uint32_t)&twi->TASKS_SUSPEND;
+        rfduino_ppi_channel_assign(7, &twi->EVENTS_BB, &twi->TASKS_SUSPEND);
     }
-    NRF_PPI->CHENSET = PPI_CHENSET_CH7_Msk;
     twi->TASKS_STARTRX = 1;
     while(true)
     {
@@ -233,7 +230,7 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
         {
             if (issue_stop_condition == 1)
 			{
-				NRF_PPI->CH[7].TEP = (uint32_t)&twi->TASKS_STOP;
+        rfduino_ppi_channel_assign(7, &twi->EVENTS_BB, &twi->TASKS_STOP);
 			}
         }
 
@@ -252,7 +249,7 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
 		twi->EVENTS_STOPPED = 0;
 	}
 
-    NRF_PPI->CHENCLR = PPI_CHENCLR_CH7_Msk;
+    rfduino_ppi_channel_unassign(7);
     return bytes_received;
 }
 

@@ -1,5 +1,10 @@
 CHANGELOG
 
+v 1.5.1
+  - Added support for OSX (contributed by nitsky)
+  - RFDLoader now supports 32-bit and 64-bit osx snow leopard through mavericks
+  - fix for i2c not working when BLE stack is active
+
 v 1.5
   - Added support for Flash Memory.  See the RFduinoNonBLE flash example
     sketches for use.  More documentation is also available in
