@@ -260,6 +260,21 @@ uint8_t UART0_RX()
   return uc_data;
 }
 
+uint32_t getDeviceIdLow()
+{
+  return NRF_FICR->DEVICEID[0];
+}
+
+uint32_t getDeviceIdHigh()
+{
+  return NRF_FICR->DEVICEID[1];
+}
+
+uint64_t getDeviceId()
+{
+  return ((uint64_t)getDeviceIdHigh() << 32) | getDeviceIdLow();
+}
+
 #ifdef __cplusplus
 }
 #endif

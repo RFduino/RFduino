@@ -166,6 +166,11 @@ uint8_t UART0_RX();
 
 #include "Memory.h"
 
+// unique id for each unit
+uint32_t getDeviceIdLow();
+uint32_t getDeviceIdHigh();
+uint64_t getDeviceId();
+
 #ifdef __cplusplus
 }
 #endif
