@@ -102,11 +102,13 @@ extern void RFduino_systemOff(void);
  */
 extern float RFduino_temperature(int scale);
 
-uint32_t rfduino_ppi_channel_assign(uint8_t channel_num, const volatile void * event_endpoint, const volatile void * task_endpoint);
-uint32_t rfduino_ppi_channel_unassign(uint8_t channel_num);
+void rfduino_ppi_channel_assign(uint8_t channel_num, const volatile void * event_endpoint, const volatile void * task_endpoint);
+void rfduino_ppi_channel_unassign(uint8_t channel_num);
 
-uint32_t rfduino_nvic_enableirq(uint8_t irq_num);
-uint32_t rfduino_nvic_disableirq(uint8_t irq_num);
+void rfduino_nvic_enableirq(uint8_t irq_num);
+void rfduino_nvic_disableirq(uint8_t irq_num);
+
+void rfduino_nvic_setpriority(uint8_t irq_num, uint32_t priority);
 
 // 1 if the BLE radio is active (or about to become active), 0 if not
 extern volatile int RFduinoBLE_radioActive;

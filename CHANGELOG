@@ -1,5 +1,11 @@
 CHANGELOG
 
+v 1.6.1
+  - Fixed issue with not being able to call RFduinoBLE.end() / 
+    RFduino_systemReset() from pinWakeCallback
+  - corrected return types from uint32_t to void for rfduino_ functions
+  - Corrected maximum sketch size.  The last 4 flash pages are reserved,
+
 v 1.6
   - Added getDeviceId() to return the unique id for each device
     (see DeviceInfo sketch)

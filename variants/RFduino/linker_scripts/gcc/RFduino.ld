@@ -31,7 +31,7 @@ SEARCH_DIR(.)
 /* Memory Spaces Definitions */
 MEMORY
 {
-  rom (rx) : ORIGIN = 0x1F000, LENGTH = 132K
+  rom (rx) : ORIGIN = 0x1F000, LENGTH = 128K
   ram (rwx) : ORIGIN = 0x20002000, LENGTH = 8K
 }
 

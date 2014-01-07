@@ -18,5 +18,5 @@ RFduino.upload.tool=RFDLoader
 RFduino.upload.protocol=
 
 # sizer will not run if this is not defined
-# 132KB
-RFduino.upload.maximum_size=135168
+# 128KB
+RFduino.upload.maximum_size=131072
