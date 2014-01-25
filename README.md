@@ -11,9 +11,11 @@
 * Download Arduino 1.5 here: [http://arduino.cc](http://arduino.cc/en/Main/Software)  
   (on osx remember to open arduino first to make gatekeeper perform its magic)  
 
-* Copy the RFduino directory from this repository in Arduino  
-  (on Windows, C:\arduino-1.5.4\hardware\arduino)  
-  (on OSX, /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino)  
+* Create a new directory inside the Sketch directory called "hardware"
+  inside this new directory create another directory called "RFduino"
+  Copy the RFduino directory from this repository into that directory
+  (on Windows, "My Documents\Arduino\hardware\RFduino")  
+  (on OSX, "Documents/Arduino/hardware/RFduino")  
   or "git clone https://github.com/RFduino/RFduino" in the directory indicated
 
 * Install the FTDI drivers from here: [http://ftdichip.com](http://www.ftdichip.com/Drivers/VCP.htm)
