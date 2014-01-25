@@ -11,8 +11,7 @@
 * Download Arduino 1.5 here: [http://arduino.cc](http://arduino.cc/en/Main/Software)  
   (on osx remember to open arduino first to make gatekeeper perform its magic)  
 
-* Create a new directory inside the Sketch directory called "hardware"
-  inside this new directory create another directory called "RFduino"
+* Create a new directory inside the Sketch directory called "hardware", inside this new directory create another directory called "RFduino"
   Copy the RFduino directory from this repository into that directory
   (on Windows, "My Documents\Arduino\hardware\RFduino")  
   (on OSX, "Documents/Arduino/hardware/RFduino")  
