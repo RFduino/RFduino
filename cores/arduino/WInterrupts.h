@@ -51,7 +51,7 @@
 extern "C" {
 #endif
 
-typedef void (*callback_t)(void);
+typedef dynamic_handler_t callback_t;
 
 void attachInterrupt(uint8_t IRQn, callback_t callback);
 void detachInterrupt(uint8_t IRQn);

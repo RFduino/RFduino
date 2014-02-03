@@ -49,9 +49,6 @@
 #include "RingBuffer.h"
 //#include "variant.h"
 
-// Includes Atmel CMSIS
-#include <chip.h>
-
 typedef void Uart;
 
 class UARTClass : public HardwareSerial

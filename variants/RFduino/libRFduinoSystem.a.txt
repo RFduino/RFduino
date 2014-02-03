@@ -2,7 +2,8 @@
 startup_nrf51822.o:
 00000000 W ADC_IRQHandler
 00000000 W CCM_AAR_IRQHandler
-00000000 T Dummy_Handler
+00000000 T Default_Dynamic_Handler
+00000000 T Default_Handler
 00000000 W ECB_IRQHandler
 00000000 W GPIOTE_IRQHandler
 00000000 W HardFault_Handler
@@ -40,8 +41,10 @@ startup_nrf51822.o:
          U _ezero
          U _srelocate
          U _szero
-00000000 R exception_table
+00000000 D dynamic_handlers
+00000000 D exception_handlers
          U main
+00000000 R vector_table
 
 system_nrf51.o:
 00000000 D SystemCoreClock

@@ -48,6 +48,8 @@
 /*
  * Core and peripherals registers definitions
  */
+#include "include/startup_nrf51822.h"
+#include "include/system_nrf51.h"
 #include "include/nrf51.h"
 #include "include/nrf51_bitfields.h"
 

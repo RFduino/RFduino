@@ -25,7 +25,7 @@ device.
 
 /*lint ++flb "Enter library region" */
 
-#define __SYSTEM_CLOCK      (16000000UL)
+#define __SYSTEM_CLOCK      (__XTAL)
 
 #define FLASH_RESET_VALUE   (0xFFFFFFFF)
 

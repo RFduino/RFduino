@@ -55,7 +55,7 @@ void loop()
   digitalWrite(led, LOW);
   
   // button used to wake up the RFduino (when button 1 is pressed, the RFduino will restart advertising)
-  pinMode(button, INPUT_PULLUP);
+  pinMode(button, INPUT);
   RFduino_pinWake(5, HIGH);
   
   // wait indefinitely in ultra low power and wake up on button 1 press

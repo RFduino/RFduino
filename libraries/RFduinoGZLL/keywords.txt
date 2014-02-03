@@ -1,0 +1,34 @@
+#######################################
+# Syntax Coloring Map SPI
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+RFduinoGZLL	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+txPowerLevel	KEYWORD2
+
+begin	KEYWORD2
+end KEYWORD2
+sendToHost	KEYWORD2
+sendToDevice	KEYWORD2
+
+RFduinoBLE_onReceive	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+DEVICE0	LITERAL1
+DEVICE1	LITERAL1
+DEVICE2	LITERAL1
+DEVICE3	LITERAL1
+DEVICE4	LITERAL1
+DEVICE5	LITERAL1
+DEVICE6	LITERAL1
+DEVICE7	LITERAL1
+HOST	LITERAL1

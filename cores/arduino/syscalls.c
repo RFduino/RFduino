@@ -58,7 +58,7 @@
 
 #include <stdio.h>
 #include <stdarg.h>
-#include "nrf51.h"
+#include <stdint.h>
 #if defined (  __GNUC__  ) /* GCC CS3 */
   #include <sys/types.h>
   #include <sys/stat.h>
