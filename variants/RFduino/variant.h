@@ -133,6 +133,17 @@ extern uint8_t Pin_Occupied_for_PWM[PINS_COUNT]; // Determines if particular pin
 #define UART_DEFAULT_RX_PIN		0
 #define UART_DEFAULT_TX_PIN		1
 
+typedef enum
+{
+  UART0_State_NotStarted,
+  UART0_State_BeforeFirstTX,
+  UART0_State_AfterFirstTX
+}  UART0_States;
+
+extern UART0_States UART0_State;
+
+int UART0_BaudRate();
+
 void UART0_Start( int dwBaudRate, uint8_t rx_pin, uint8_t tx_pin );
 void UART0_Stop();
 void UART0_FlushTX();
@@ -150,7 +161,8 @@ static uint8_t __INLINE UART0_RXData()
   return NRF_UART0->RXD;
 }
 
-void UART0_RXReset( int isr );
+void UART0_RXReset();
+int UART0_RXErrorReset();
 uint8_t UART0_RX();
 
 /*

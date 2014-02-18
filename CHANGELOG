@@ -1,5 +1,8 @@
 CHANGELOG
 
+v 1.7.1
+  - Fix for the UART stops receiving bytes after some time with BLE enabled
+
 v 1.7
   - Added RFduino to RFduino wireless communication support
   - Added pgmspace.h / PROGMEM support

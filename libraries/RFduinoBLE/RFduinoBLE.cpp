@@ -39,6 +39,20 @@ RFduinoBLEClass::RFduinoBLEClass()
 
 int RFduinoBLEClass::begin()
 {
+  if (UART0_State != UART0_State_NotStarted && UART0_BaudRate() > 9600)
+  {
+    const char *error = "BLE + UART > 9600 baud not permitted due to critical BLE timing requirements";
+
+    // attempt to notify user of error condition
+    const char *p = error;
+    while (*p)
+      UART0_TX(*p++);
+
+    // don't continue
+    while (1)
+      ;
+  }
+
   RFduinoBLE_device_name = deviceName;
   RFduinoBLE_advertisement_data = advertisementData;
   RFduinoBLE_advertisement_interval = advertisementInterval;

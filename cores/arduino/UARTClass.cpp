@@ -118,9 +118,14 @@ void UARTClass::IrqHandler( void )
   // did we receive data
   if (UART0_RXReady())
   {
-    _rx_buffer->store_char(UART0_RXData());
+    UART0_RXReset();
 
-    UART0_RXReset( true );
+    uint8_t ch = UART0_RXData();
+
+    if (UART0_RXErrorReset())
+      return;
+
+    _rx_buffer->store_char(ch);
 
     if (serialEvent)
       serialEvent();

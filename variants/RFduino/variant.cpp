@@ -103,14 +103,31 @@ void init( void )
 // NRF_UART0->EVENTS_TXDRDY is initialized to 0 at power up
 // we cannot test this event until after one byte has been transmitted
 
-enum UART0_States
-{
-  UART0_State_NotStarted,
-  UART0_State_BeforeFirstTX,
-  UART0_State_AfterFirstTX
-};
-
 UART0_States UART0_State = UART0_State_NotStarted;
+
+int UART0_BaudRate()
+{
+  switch ((NRF_UART0->BAUDRATE & UART_BAUDRATE_BAUDRATE_Msk) >> UART_BAUDRATE_BAUDRATE_Pos)
+  {
+    case UART_BAUDRATE_BAUDRATE_Baud1200: return 1200;
+    case UART_BAUDRATE_BAUDRATE_Baud2400: return 2400;
+    case UART_BAUDRATE_BAUDRATE_Baud4800: return 4800;
+    case UART_BAUDRATE_BAUDRATE_Baud9600: return 9600;
+    case UART_BAUDRATE_BAUDRATE_Baud14400: return 14400;
+    case UART_BAUDRATE_BAUDRATE_Baud19200: return 19200;
+    case UART_BAUDRATE_BAUDRATE_Baud28800: return 28800;
+    case UART_BAUDRATE_BAUDRATE_Baud38400: return 38400;
+    case UART_BAUDRATE_BAUDRATE_Baud57600: return 57600;
+    case UART_BAUDRATE_BAUDRATE_Baud76800: return 76800;
+    case UART_BAUDRATE_BAUDRATE_Baud115200: return 115200;
+    case UART_BAUDRATE_BAUDRATE_Baud230400: return 230400;
+    case UART_BAUDRATE_BAUDRATE_Baud250000: return 250000;
+    case UART_BAUDRATE_BAUDRATE_Baud460800: return 460800;
+    case UART_BAUDRATE_BAUDRATE_Baud921600: return 921600;
+    case UART_BAUDRATE_BAUDRATE_Baud1M: return 1000000;
+  }
+  return 0;
+}
 
 void UART0_Start( int dwBaudRate, uint8_t rx_pin, uint8_t tx_pin )
 {
@@ -165,6 +182,20 @@ void UART0_Start( int dwBaudRate, uint8_t rx_pin, uint8_t tx_pin )
   attachInterrupt(UART0_IRQn, UART0_Interrupt);
 
   UART0_State = UART0_State_BeforeFirstTX;
+
+  if (RFduinoBLE_enabled && dwBaudRate > 9600)
+  {
+    const char *error = "BLE + UART > 9600 baud not permitted due to critical BLE timing requirements";
+
+    // attempt to notify user of error condition
+    const char *p = error;
+    while (*p)
+      UART0_TX(*p++);
+
+    // don't continue
+    while (1)
+      ;
+  }
 }
 
 void UART0_Stop()
@@ -213,15 +244,17 @@ void UART0_TX( const uint8_t uc_data )
 
 // UART0_RXData declared inline in variant.h
 
-void UART0_RXReset( int isr )
+void UART0_RXReset()
 {
-  // errors
+  NRF_UART0->EVENTS_RXDRDY = 0;
+}
 
-  // UART0_RXReset() should only be called after a byte is received (no need to check UART0_State)
-
+int UART0_RXErrorReset()
+{
   if (NRF_UART0->ERRORSRC & UART_ERRORSRC_OVERRUN_Msk)
   {
     NRF_UART0->ERRORSRC = (UART_ERRORSRC_OVERRUN_Clear << UART_ERRORSRC_OVERRUN_Pos);
+    return true;
   }
   /*
   else if (NRF_UART0->ERRORSRC & UART_ERRORSRC_PARITY_Msk)
@@ -232,6 +265,7 @@ void UART0_RXReset( int isr )
   else if (NRF_UART0->ERRORSRC & UART_ERRORSRC_FRAMING_Msk)
   {
     NRF_UART0->ERRORSRC = (UART_ERRORSRC_FRAMING_Clear << UART_ERRORSRC_FRAMING_Pos);
+    return true;
   }
   /*
   else if (NRF_UART0->ERRORSRC & UART_ERRORSRC_BREAK_Msk)
@@ -239,8 +273,8 @@ void UART0_RXReset( int isr )
     NRF_UART0->ERRORSRC = (UART_ERRORSRC_BREAK_Clear << UART_ERRORSRC_BREAK_Pos);
   }
   */
-  else
-    NRF_UART0->EVENTS_RXDRDY = 0;
+
+  return false;
 }
 
 uint8_t UART0_RX()
@@ -249,13 +283,17 @@ uint8_t UART0_RX()
 
   // if you call UART0_RX(), you expect UART0 to be Started (no need to check UART0_State)
 
-  // byte available
-  while (! UART0_RXReady())
-    ;
+  do
+  {
+    // byte available
+    while (! UART0_RXReady())
+      ;
 
-  uc_data = UART0_RXData();
+    UART0_RXReset();
 
-  UART0_RXReset( false );
+    uc_data = UART0_RXData();
+
+  } while (UART0_RXErrorReset());
 
   return uc_data;
 }
