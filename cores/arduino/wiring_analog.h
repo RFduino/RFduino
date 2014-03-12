@@ -102,6 +102,7 @@ extern void analogReadResolution(int res);
  */
 extern void analogWriteResolution(int res);
 
+extern int find_free_PPI_channel(int exclude_channel);
 extern void turn_Off_GPIOTE_PPI_from_GPIO(uint32_t ulPin);
 
 #ifdef __cplusplus

@@ -39,6 +39,8 @@ enter and exit from the network at any time.
 
 #include "libRFduinoGZLL.h"
 
+extern int RFduinoGZLL_enabled;
+
 // -20 dBm to +4 dBm = default +4 dBm
 int RFduinoGZLL_tx_power_level = 4;
 
@@ -79,6 +81,8 @@ int RFduinoGZLL_begin(device_t device)
   if (! nrf_gzll_enable())
     return 3;
 
+  RFduinoGZLL_enabled = 1;
+
   return 0;
 }
 
@@ -111,6 +115,8 @@ void RFduinoGZLL_end(void)
 
   NVIC_DisableIRQ(RADIO_IRQn);
   NVIC_DisableIRQ(TIMER2_IRQn);
+
+  RFduinoGZLL_enabled = 0;
 }
 
 void nrf_gzll_host_rx_data_ready(uint32_t pipe, nrf_gzll_host_rx_info_t rx_info)

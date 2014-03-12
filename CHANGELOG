@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 1.7.2
+  - Enhancement to PPI channel selection to eliminate potential conflicts
+  - Added the ability to select I2C speed to Wire Library (100, 250 or 400 kbps)
+
 v 1.7.1
   - Fix for the UART stops receiving bytes after some time with BLE enabled
 

@@ -19,7 +19,10 @@ extern "C" {
 #define HIGH 1
 #define DISABLE 5
 
+extern int RFduinoBLE_used;
+extern int RFduinoGZLL_used;
 extern int RFduinoBLE_enabled;
+extern int RFduinoGZLL_enabled;
 
 // pass the pin number so you can use the same interrupt handler for all pins
 // return 0 to reset wake_detect bit (and not exit RFduino_ULPDelay)

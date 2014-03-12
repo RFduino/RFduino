@@ -53,6 +53,8 @@ enter and exit from the network at any time.
 
 RFduinoGZLLClass::RFduinoGZLLClass()
 {
+  ::RFduinoGZLL_used = 1;
+
 	txPowerLevel = +4;
 }
 

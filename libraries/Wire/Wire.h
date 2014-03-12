@@ -61,6 +61,8 @@
 
 class TwoWire : public Stream {
 public:
+  int speed;    // 100, 250 or 400 kbps
+
 	TwoWire(NRF_TWI_Type *twi);
 	void begin();
 	void beginOnPins(uint8_t clock_pin, uint8_t data_pin);
@@ -102,6 +104,9 @@ public:
 	// SDA and SCL pin numbers
 	uint8_t SDA_pin_number;
 	uint8_t SCL_pin_number;
+
+  // PPI channel
+  uint8_t PPI_channel;
 
 	// RX Buffer
 	uint8_t rxBuffer[BUFFER_LENGTH];

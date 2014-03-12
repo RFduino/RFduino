@@ -120,30 +120,35 @@ uint32_t analogRead(uint32_t ulPin)
 	return ulValue;
 }
 
+int find_free_PPI_channel(int exclude_channel)
+{
+  // For BLE / NonBLE, find first free PPI Channel in the range 0-7. Note the channels 8-15 is occupied by SoftDevice.  Maximum 4 PPI pairs.
+  // For GZLL only, find first free PPI Channel in the range 3-8.  Note the channels 0-2 and TIMER2 are used by Gazell.  Maximum 3 PPI pairs.
+  // For GZLL and BLE, find first free PPI Channel in the range 3-7.  Maximum 2 PPI pairs.
+  int start = 0;
+  int end = 8;
+
+  int i;
+
+  if (RFduinoGZLL_used)
+    start = 3;
+
+  if (! RFduinoBLE_used)
+    end = 16;
+
+  for (i = start; i < end; i++)
+    if (! (NRF_PPI->CHEN & (1 << i)))
+      if (i != exclude_channel)
+        return i;
+
+  return 255;
+}
+
 void turn_On_PPI_to_GPIO_for_PWM(uint32_t ulPin, uint32_t gpiote_channel, NRF_TIMER_Type* Timer, uint32_t CC_channel)
 {
-	uint32_t i;
-	uint8_t chan_0 = 255;
-	uint8_t chan_1 = 255;
-	// Initialize Programmable Peripheral Interconnect
-	// Find first free PPI Channel in the range 0-7. Note the channels 8-15 is occupied by SoftDevice
-	for (i = 0; i < 8; i++)
-	{
-		if (!(NRF_PPI->CHEN & (1 << i)))
-		{
-			chan_0 = i;
-			// Find second free PPI Channel in the range 0-7. Note the channels 8-15 is occupied by SoftDevice
-			for (i = (chan_0 + 1); i < 8; i++)
-			{
-				if (!(NRF_PPI->CHEN & (1 << i)))
-				{
-					chan_1 = i;
-					break;
-				}
-			}
-			break;
-		}
-	}
+  // Initialize Programmable Peripheral Interconnect
+  int chan_0 = find_free_PPI_channel(255);
+  int chan_1 = find_free_PPI_channel(chan_1);
 
 	if ((chan_0 != 255) && (chan_1 != 255))
 	{
@@ -383,7 +388,7 @@ void analogWrite(uint32_t ulPin, uint32_t ulValue) {
 			else
 			{
 				// All channels of Timer1 is occupied, need to use Timer2
-				if (Timer2_Compare_Unit_Occupied_by_Pin[0] == 255)
+				if (!RFduinoGZLL_used && Timer2_Compare_Unit_Occupied_by_Pin[0] == 255)
 				{
 					// Timer2 is not used: need to initialize it
 

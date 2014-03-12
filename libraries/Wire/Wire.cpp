@@ -110,8 +110,9 @@ static inline bool TWI_STATUS_DNACK(uint32_t status) {
 
 TwoWire::TwoWire(NRF_TWI_Type *_twi) :
 	twi(_twi), rxBufferIndex(0), rxBufferLength(0), txAddress(0),
-			txBufferLength(0), srvBufferIndex(0), srvBufferLength(0), status(
-					UNINITIALIZED) {
+			txBufferLength(0), srvBufferIndex(0), srvBufferLength(0),
+      status(UNINITIALIZED), speed(100)
+{
 	// Empty
 }
 
@@ -182,8 +183,19 @@ bool TwoWire::twi_master_init(void)
     twi->EVENTS_TXDSENT = 0;
     twi->PSELSCL = SCL_pin_number;
     twi->PSELSDA = SDA_pin_number;
-    twi->FREQUENCY = TWI_FREQUENCY_FREQUENCY_K100 << TWI_FREQUENCY_FREQUENCY_Pos;
-    rfduino_ppi_channel_unassign(7);
+
+    uint32_t freq TWI_FREQUENCY_FREQUENCY_K100;;
+    if (speed == 250)
+      freq = TWI_FREQUENCY_FREQUENCY_K250;
+    else if (speed == 400)
+      freq = TWI_FREQUENCY_FREQUENCY_K400;
+    twi->FREQUENCY = freq;
+
+    PPI_channel = find_free_PPI_channel(255);
+
+    // reserve the PPI channel
+    rfduino_ppi_channel_assign(PPI_channel, 0, 0);
+
     twi->ENABLE = TWI_ENABLE_ENABLE_Enabled << TWI_ENABLE_ENABLE_Pos;
 
     return twi_master_clear_bus();
@@ -202,11 +214,11 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
 
     if ((data_length == 1) && (issue_stop_condition == 1))
     {
-        rfduino_ppi_channel_assign(7, &twi->EVENTS_BB, &twi->TASKS_STOP);
+        rfduino_ppi_channel_assign(PPI_channel, &twi->EVENTS_BB, &twi->TASKS_STOP);
     }
     else
     {
-        rfduino_ppi_channel_assign(7, &twi->EVENTS_BB, &twi->TASKS_SUSPEND);
+        rfduino_ppi_channel_assign(PPI_channel, &twi->EVENTS_BB, &twi->TASKS_SUSPEND);
     }
     twi->TASKS_STARTRX = 1;
     while(true)
@@ -230,7 +242,7 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
         {
             if (issue_stop_condition == 1)
 			{
-        rfduino_ppi_channel_assign(7, &twi->EVENTS_BB, &twi->TASKS_STOP);
+        rfduino_ppi_channel_assign(PPI_channel, &twi->EVENTS_BB, &twi->TASKS_STOP);
 			}
         }
 
@@ -249,7 +261,8 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
 		twi->EVENTS_STOPPED = 0;
 	}
 
-    rfduino_ppi_channel_unassign(7);
+    // unassign the PPI channel (but keep it reserved)
+    rfduino_ppi_channel_assign(PPI_channel, 0, 0);
     return bytes_received;
 }
 

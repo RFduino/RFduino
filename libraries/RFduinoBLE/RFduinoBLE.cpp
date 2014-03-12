@@ -31,6 +31,8 @@ volatile int& RFduinoBLEClass::radioActive = RFduinoBLE_radioActive;
 
 RFduinoBLEClass::RFduinoBLEClass()
 {
+  ::RFduinoBLE_used = 1;
+
 	deviceName = "RFduino";
 	advertisementData = "sketch";
 	advertisementInterval = 80;
