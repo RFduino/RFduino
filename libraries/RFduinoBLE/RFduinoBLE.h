@@ -42,6 +42,11 @@ public:
   // default "sketch"
   const char *advertisementData;
 
+  bool iBeacon;
+  uint8_t iBeaconUUID[16];
+  unsigned short iBeaconMajor;
+  unsigned short iBeaconMinor;
+
   // in ms (converted to 0.625ms units) - range 20ms to 10.24s - default 80ms
   int advertisementInterval;
 

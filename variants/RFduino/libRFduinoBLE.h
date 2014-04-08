@@ -25,6 +25,18 @@ extern const char *RFduinoBLE_advertisement_data;
 // in ms (converted to 0.625ms units) - range 20ms to 10.24s - default 80ms
 extern int RFduinoBLE_advertisement_interval;
 
+// default false (false = regular advertising, true = ibeacon advertising)
+extern bool RFduinoBLE_ibeacon;
+
+// default iBeacon Proximity UUID
+extern uint8_t RFduinoBLE_ibeacon_uuid[16];
+
+// default 0
+extern unsigned short RFduinoBLE_ibeacon_major;
+
+// default 0
+extern unsigned short RFduinoBLE_ibeacon_minor;
+
 // -20 dBm to +4 dBm - default +4 dBm
 extern int8_t RFduinoBLE_tx_power_level;
 

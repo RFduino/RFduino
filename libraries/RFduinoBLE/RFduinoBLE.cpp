@@ -35,6 +35,12 @@ RFduinoBLEClass::RFduinoBLEClass()
 
 	deviceName = "RFduino";
 	advertisementData = "sketch";
+  iBeacon = false;
+  // iBeacon Proximity UUID
+  uint8_t uuid[16] = {0xE2, 0xC5, 0x6D, 0xB5, 0xDF, 0xFB, 0x48, 0xD2, 0xB0, 0x60, 0xD0, 0xF5, 0xA7, 0x10, 0x96, 0xE0};
+  memcpy(iBeaconUUID, uuid, sizeof(iBeaconUUID));
+  iBeaconMajor = 0;
+  iBeaconMinor = 0;
 	advertisementInterval = 80;
 	txPowerLevel = +4;
 }
@@ -57,6 +63,10 @@ int RFduinoBLEClass::begin()
 
   RFduinoBLE_device_name = deviceName;
   RFduinoBLE_advertisement_data = advertisementData;
+  RFduinoBLE_ibeacon = iBeacon;
+  memcpy(RFduinoBLE_ibeacon_uuid, iBeaconUUID, sizeof(RFduinoBLE_ibeacon_uuid));
+  RFduinoBLE_ibeacon_major = iBeaconMajor;
+  RFduinoBLE_ibeacon_minor = iBeaconMinor;
   RFduinoBLE_advertisement_interval = advertisementInterval;
   RFduinoBLE_tx_power_level = txPowerLevel;
 

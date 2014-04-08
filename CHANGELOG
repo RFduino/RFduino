@@ -1,5 +1,8 @@
 CHANGELOG
 
+v 1.8
+  - iBeacon Enhancement
+
 v 1.7.2
   - Enhancement to PPI channel selection to eliminate potential conflicts
   - Added the ability to select I2C speed to Wire Library (100, 250 or 400 kbps)
