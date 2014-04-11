@@ -97,11 +97,18 @@ uint32_t analogRead(uint32_t ulPin)
 	if ((ulPin > 0) && (ulPin < PINS_COUNT))	// Only pins 1-6 is avaliable for using as ADC inputs
 	{
 		pselValue = (1 << (ulPin + 1));	// Calculate PSEL value
-		NRF_ADC->CONFIG = 	(ADC_CONFIG_RES_10bit 	<< ADC_CONFIG_RES_Pos)|			// 10bit ADC resolution
+    if (analog_reference == ADC_CONFIG_REFSEL_External)
+		    NRF_ADC->CONFIG = 	(ADC_CONFIG_RES_10bit 	<< ADC_CONFIG_RES_Pos)|			// 10bit ADC resolution
 							(adc_input_selection 	<< ADC_CONFIG_INPSEL_Pos)|		// DEFAULT: Analog input specified by PSEL with 1/3 prescaling used as input for the conversion
-							(analog_reference 		<< ADC_CONFIG_REFSEL_Pos)|		// DEFAULT: Use supply voltage with 1/3 prescaling as reference for conversion. Only usable when supply voltage is between 2.5V and 3.6V
+							(ADC_CONFIG_REFSEL_External  << ADC_CONFIG_REFSEL_Pos)|
 							(pselValue 				<< ADC_CONFIG_PSEL_Pos)|		// Select ADC input
 							(external_reference 	<< ADC_CONFIG_EXTREFSEL_Pos);	// DEFAULT: Use analog reference 0 as reference if selected external reference
+    else
+        NRF_ADC->CONFIG =   (ADC_CONFIG_RES_10bit   << ADC_CONFIG_RES_Pos)|     // 10bit ADC resolution
+              (adc_input_selection  << ADC_CONFIG_INPSEL_Pos)|    // DEFAULT: Analog input specified by PSEL with 1/3 prescaling used as input for the conversion
+              (analog_reference     << ADC_CONFIG_REFSEL_Pos)|    // DEFAULT: Use supply voltage with 1/3 prescaling as reference for conversion. Only usable when supply voltage is between 2.5V and 3.6V
+              (pselValue        << ADC_CONFIG_PSEL_Pos)|    // Select ADC input
+              (ADC_CONFIG_EXTREFSEL_None  << ADC_CONFIG_EXTREFSEL_Pos);
 		NRF_ADC->INTENCLR = 0xFFFFFFFF;
 		NRF_ADC->ENABLE = 	(ADC_ENABLE_ENABLE_Enabled 		<< ADC_ENABLE_ENABLE_Pos);		// Enable ADC
 		NRF_ADC->TASKS_START = 	1;															// Start A-D conversion

@@ -65,39 +65,21 @@ void SPIClass::begin()
 
 void SPIClass::end()
 {
-	spi->ENABLE = (SPI_ENABLE_ENABLE_Disabled << SPI_ENABLE_ENABLE_Pos);
+	spi->ENABLE &= ~(SPI_ENABLE_ENABLE_Enabled << SPI_ENABLE_ENABLE_Pos);
 }
 
 void SPIClass::setBitOrder(BitOrder _bitOrder)
 {
 	if (_bitOrder == MSBFIRST)
-		spi->CONFIG |= (SPI_CONFIG_ORDER_MsbFirst << SPI_CONFIG_ORDER_Pos);
+		spi->CONFIG &= ~(SPI_CONFIG_ORDER_LsbFirst << SPI_CONFIG_ORDER_Pos);
 	else
-	    spi->CONFIG |= (SPI_CONFIG_ORDER_LsbFirst << SPI_CONFIG_ORDER_Pos);
+    spi->CONFIG |= (SPI_CONFIG_ORDER_LsbFirst << SPI_CONFIG_ORDER_Pos);
 }
 
 void SPIClass::setDataMode(uint8_t _dataMode)
 {
-    if (_dataMode == SPI_MODE0)
-    {
-		setCPOL(0);
-		setCPHA(0);
-	}
-    else if (_dataMode == SPI_MODE1)
-    {
-		setCPOL(0);
-		setCPHA(1);
-	}
-    else if (_dataMode == SPI_MODE2)
-    {
-		setCPOL(1);
-		setCPHA(0);
-	}
-    else if (_dataMode == SPI_MODE3)
-    {
-		setCPOL(1);
-		setCPHA(1);
-	}
+  setCPOL((_dataMode & 0x02) >> 1);
+  setCPHA(_dataMode & 0x01);
 }
 
 void SPIClass::setCPOL(bool _activeLow)
@@ -105,7 +87,7 @@ void SPIClass::setCPOL(bool _activeLow)
 	if (_activeLow)
 	  spi->CONFIG |= (SPI_CONFIG_CPOL_ActiveLow << SPI_CONFIG_CPOL_Pos);
 	else
-	  spi->CONFIG |= (SPI_CONFIG_CPOL_ActiveHigh << SPI_CONFIG_CPOL_Pos);
+	  spi->CONFIG &= ~(SPI_CONFIG_CPOL_ActiveLow << SPI_CONFIG_CPOL_Pos);
 }
 
 void SPIClass::setCPHA(bool _trailing)
@@ -113,7 +95,7 @@ void SPIClass::setCPHA(bool _trailing)
 	if (_trailing)
 	  spi->CONFIG |= (SPI_CONFIG_CPHA_Trailing << SPI_CONFIG_CPHA_Pos);
 	else
-	  spi->CONFIG |= (SPI_CONFIG_CPHA_Leading << SPI_CONFIG_CPHA_Pos);
+	  spi->CONFIG &= ~(SPI_CONFIG_CPHA_Trailing << SPI_CONFIG_CPHA_Pos);
 }
 
 void SPIClass::setFrequency(int _speedKbps)
@@ -136,21 +118,17 @@ void SPIClass::setFrequency(int _speedKbps)
 
 void SPIClass::setClockDivider(uint8_t _divider)
 {
-
 }
 
 byte SPIClass::transfer(uint8_t _data)
 {
-// Serial.println(_data);
     spi->TXD = _data;
 
-      while (spi->EVENTS_READY == 0)
-        ;
+    while (spi->EVENTS_READY == 0)
+      ;
+    spi->EVENTS_READY = 0;
 
     _data = spi->RXD;
-// Serial.println(_data);
-
-    spi->EVENTS_READY = 0;
 
     return _data;
 }

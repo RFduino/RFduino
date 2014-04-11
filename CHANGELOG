@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 1.8.1
+  - Fixed conflict between Analog to Digital Conversion and UART
+  - Cleaned up SPI library
+
 v 1.8
   - iBeacon Enhancement
 
