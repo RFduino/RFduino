@@ -19,6 +19,7 @@ void setup() {
   memcpy(RFduinoBLE.iBeaconUUID, uuid, sizeof(RFduinoBLE.iBeaconUUID));
   RFduinoBLE.iBeaconMajor = 1234;
   RFduinoBLE.iBeaconMinor = 5678;
+  RFduinoBLE.iBeaconMeasuredPower = 0xC6;
   
   // start the BLE stack
   RFduinoBLE.begin();

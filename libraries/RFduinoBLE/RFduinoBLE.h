@@ -46,6 +46,8 @@ public:
   uint8_t iBeaconUUID[16];
   unsigned short iBeaconMajor;
   unsigned short iBeaconMinor;
+  // default 2's complement iBeacon Power Measurement at 1 meter (default is 0xC5 = -59dBm)
+  unsigned char iBeaconMeasuredPower;
 
   // in ms (converted to 0.625ms units) - range 20ms to 10.24s - default 80ms
   int advertisementInterval;

@@ -155,7 +155,7 @@ void turn_On_PPI_to_GPIO_for_PWM(uint32_t ulPin, uint32_t gpiote_channel, NRF_TI
 {
   // Initialize Programmable Peripheral Interconnect
   int chan_0 = find_free_PPI_channel(255);
-  int chan_1 = find_free_PPI_channel(chan_1);
+  int chan_1 = find_free_PPI_channel(chan_0);
 
 	if ((chan_0 != 255) && (chan_1 != 255))
 	{

@@ -37,6 +37,9 @@ extern unsigned short RFduinoBLE_ibeacon_major;
 // default 0
 extern unsigned short RFduinoBLE_ibeacon_minor;
 
+// default 2's complement iBeacon Power Measurement at 1 meter (default is 0xC6 = -58dBm)
+extern unsigned char RFduinoBLE_ibeacon_measured_power;
+
 // -20 dBm to +4 dBm - default +4 dBm
 extern int8_t RFduinoBLE_tx_power_level;
 

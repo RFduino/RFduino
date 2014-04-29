@@ -41,6 +41,7 @@ RFduinoBLEClass::RFduinoBLEClass()
   memcpy(iBeaconUUID, uuid, sizeof(iBeaconUUID));
   iBeaconMajor = 0;
   iBeaconMinor = 0;
+  iBeaconMeasuredPower = 0xC5;
 	advertisementInterval = 80;
 	txPowerLevel = +4;
 }
@@ -67,6 +68,7 @@ int RFduinoBLEClass::begin()
   memcpy(RFduinoBLE_ibeacon_uuid, iBeaconUUID, sizeof(RFduinoBLE_ibeacon_uuid));
   RFduinoBLE_ibeacon_major = iBeaconMajor;
   RFduinoBLE_ibeacon_minor = iBeaconMinor;
+  RFduinoBLE_ibeacon_measured_power = iBeaconMeasuredPower;
   RFduinoBLE_advertisement_interval = advertisementInterval;
   RFduinoBLE_tx_power_level = txPowerLevel;
 
