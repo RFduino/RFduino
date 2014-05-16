@@ -33,7 +33,7 @@ void setup() {
   pinMode(button, INPUT);
 
   // this is the data we want to appear in the advertisement
-  // (the deviceName length plus the advertisement length must be <= 18 bytes
+  // (the deviceName length plus the advertisement length must be <= 15 bytes
   RFduinoBLE.advertisementData = "ledbtn";
   
   // start the BLE stack

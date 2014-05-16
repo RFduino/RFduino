@@ -48,18 +48,25 @@ RFduinoBLEClass::RFduinoBLEClass()
 
 int RFduinoBLEClass::begin()
 {
-  if (UART0_State != UART0_State_NotStarted && UART0_BaudRate() > 9600)
+  // declared in variant.h
+  extern bool override_uart_limit;
+
+  if (! override_uart_limit)
   {
-    const char *error = "BLE + UART > 9600 baud not permitted due to critical BLE timing requirements";
+    if (UART0_State != UART0_State_NotStarted && UART0_BaudRate() > 9600)
+    {
+      const char *error = "BLE + UART > 9600 baud not permitted due to critical BLE timing requirements.\r\n"
+        "To override, add: override_uart_limit = true; to the top of setup() in your sketch.";
 
-    // attempt to notify user of error condition
-    const char *p = error;
-    while (*p)
-      UART0_TX(*p++);
+      // attempt to notify user of error condition
+      const char *p = error;
+      while (*p)
+        UART0_TX(*p++);
 
-    // don't continue
-    while (1)
-      ;
+      // don't continue
+      while (1)
+        ;
+    }
   }
 
   RFduinoBLE_device_name = deviceName;

@@ -148,11 +148,18 @@ void UART0_Start( int dwBaudRate, uint8_t rx_pin, uint8_t tx_pin );
 void UART0_Stop();
 void UART0_FlushTX();
 void UART0_TX( const uint8_t uc_data );
+void UART0_TXD( const uint8_t uc_data );
 
 __attribute__(( always_inline ))
 static int __INLINE UART0_RXReady()
 {
   return NRF_UART0->EVENTS_RXDRDY;
+}
+
+__attribute__(( always_inline ))
+static int __INLINE UART0_TXReady()
+{
+  return NRF_UART0->EVENTS_TXDRDY;
 }
 
 __attribute__(( always_inline ))
@@ -164,6 +171,8 @@ static uint8_t __INLINE UART0_RXData()
 void UART0_RXReset();
 int UART0_RXErrorReset();
 uint8_t UART0_RX();
+
+void UART0_TXReset();
 
 /*
  * PWM
@@ -182,6 +191,8 @@ uint8_t UART0_RX();
 uint32_t getDeviceIdLow();
 uint32_t getDeviceIdHigh();
 uint64_t getDeviceId();
+
+extern bool override_uart_limit;
 
 #ifdef __cplusplus
 }

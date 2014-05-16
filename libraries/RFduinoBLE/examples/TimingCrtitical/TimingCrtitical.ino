@@ -16,7 +16,7 @@ void setup() {
   pinMode(led, OUTPUT);
 
   // this is the data we want to appear in the advertisement
-  // (the deviceName length plus the advertisement length must be <= 18 bytes
+  // (the deviceName length plus the advertisement length must be <= 15 bytes
   RFduinoBLE.advertisementData = "data";
   
   // start the BLE stack

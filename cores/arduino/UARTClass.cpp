@@ -51,9 +51,10 @@
 
 // Constructors
 
-UARTClass::UARTClass( RingBuffer* pRx_buffer )
+UARTClass::UARTClass( RingBuffer* pRx_buffer, RingBuffer* pTx_buffer )
 {
   _rx_buffer = pRx_buffer ;
+  _tx_buffer = pTx_buffer ;
 }
 
 // Public Methods
@@ -65,6 +66,7 @@ void UARTClass::begin( const uint32_t dwBaudRate )
 
 void UARTClass::begin( const uint32_t dwBaudRate, uint8_t rx_pin, uint8_t tx_pin )
 {
+  transmitting = false;
 	UART0_Start( dwBaudRate, rx_pin, tx_pin );
 }
 
@@ -103,18 +105,55 @@ int UARTClass::read( void )
 
 void UARTClass::flush( void )
 {
-	UART0_FlushTX();
+  // Wait for any outstanding data to be sent
+  while (_tx_buffer->_iTail != _tx_buffer->_iHead)
+    ;
+
+  UART0_FlushTX();
+}
+
+void UARTClass::tx( void )
+{
+  if ( _tx_buffer->_iHead == _tx_buffer->_iTail )
+  {
+    transmitting = false;
+    return;
+  }
+
+  transmitting = true;
+
+  uint8_t uc = _tx_buffer->_aucBuffer[_tx_buffer->_iTail] ;
+  _tx_buffer->_iTail = (unsigned int)(_tx_buffer->_iTail + 1) % SERIAL_BUFFER_SIZE ;
+
+  UART0_TXD(uc);
 }
 
 size_t UARTClass::write( const uint8_t uc_data )
 {
-  UART0_TX( uc_data );
+  // silently discard data if Serial.begin() hasn't been called
+  if (UART0_State == UART0_State_NotStarted)
+    return 1;
+
+  // Wait if tx_buffer space is not available
+  while ((_tx_buffer->_iHead + 1) % SERIAL_BUFFER_SIZE == _tx_buffer->_iTail)
+    ;
+
+  _tx_buffer->store_char(uc_data);
+
+  if (! transmitting)
+    tx();
 
   return 1;
 }
 
 void UARTClass::IrqHandler( void )
 {
+  if (UART0_TXReady())
+  {
+    UART0_TXReset();
+    tx();
+  }
+
   // did we receive data
   if (UART0_RXReady())
   {

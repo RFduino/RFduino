@@ -54,13 +54,15 @@ typedef void Uart;
 class UARTClass : public HardwareSerial
 {
   protected:
-    RingBuffer *_rx_buffer ;
+    RingBuffer *_rx_buffer, *_tx_buffer ;
+    bool transmitting;
+    void tx( void );
 
   public:
-    UARTClass( RingBuffer* pRx_buffer ) ;
+    UARTClass( RingBuffer* pRx_buffer, RingBuffer* pTx_Buffer ) ;
 
     void begin( const uint32_t dwBaudRate ) ;
-	void begin( const uint32_t dwBaudRate, uint8_t rx_pin, uint8_t tx_pin ) ;
+	  void begin( const uint32_t dwBaudRate, uint8_t rx_pin, uint8_t tx_pin ) ;
     void end( void ) ;
     int available( void ) ;
     int peek( void ) ;

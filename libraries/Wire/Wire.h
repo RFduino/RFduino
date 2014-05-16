@@ -95,6 +95,8 @@ public:
 
 	void onService(void);
 
+  void twi_peripheral_recovery(void);
+
 	private:
 	bool twi_master_clear_bus(void);
 	bool twi_master_init(void);

@@ -50,9 +50,9 @@
  * UART objects
  */
 
-RingBuffer rxBuffer;
+RingBuffer rxBuffer, txBuffer;
 
-UARTClass Serial( &rxBuffer );
+UARTClass Serial( &rxBuffer, &txBuffer );
 
 // IT handlers
 void UART0_Interrupt()
@@ -63,6 +63,8 @@ void UART0_Interrupt()
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+bool override_uart_limit = false;
 
 /*
  * Pins descriptions
@@ -173,28 +175,35 @@ void UART0_Start( int dwBaudRate, uint8_t rx_pin, uint8_t tx_pin )
 
   NRF_UART0->BAUDRATE         = (dw << UART_BAUDRATE_BAUDRATE_Pos);
   NRF_UART0->ENABLE           = (UART_ENABLE_ENABLE_Enabled << UART_ENABLE_ENABLE_Pos);
-  NRF_UART0->TASKS_STARTTX    = 1;
-  NRF_UART0->TASKS_STARTRX    = 1;
   NRF_UART0->EVENTS_RXDRDY    = 0;
+  NRF_UART0->EVENTS_TXDRDY    = 0;
 
-  NRF_UART0->INTENSET        |= (UART_INTENSET_RXDRDY_Enabled << UART_INTENSET_RXDRDY_Pos );
-
-  attachInterrupt(UART0_IRQn, UART0_Interrupt);
+  NRF_UART0->INTENSET        |= (UART_INTENSET_RXDRDY_Enabled << UART_INTENSET_RXDRDY_Pos )
+                              | (UART_INTENSET_TXDRDY_Enabled << UART_INTENSET_TXDRDY_Pos );
 
   UART0_State = UART0_State_BeforeFirstTX;
 
-  if (RFduinoBLE_enabled && dwBaudRate > 9600)
+  attachInterrupt(UART0_IRQn, UART0_Interrupt);
+
+  NRF_UART0->TASKS_STARTTX    = 1;
+  NRF_UART0->TASKS_STARTRX    = 1;
+
+  if (! override_uart_limit)
   {
-    const char *error = "BLE + UART > 9600 baud not permitted due to critical BLE timing requirements";
+    if (RFduinoBLE_enabled && dwBaudRate > 9600)
+    {
+      const char *error = "BLE + UART > 9600 baud not recommended due to critical BLE timing requirements.\r\n"
+        "To override, add: override_uart_limit = true; to the top of setup() in your sketch.";
 
-    // attempt to notify user of error condition
-    const char *p = error;
-    while (*p)
-      UART0_TX(*p++);
+      // attempt to notify user of error condition
+      const char *p = error;
+      while (*p)
+        UART0_TX(*p++);
 
-    // don't continue
-    while (1)
-      ;
+      // don't continue
+      while (1)
+        ;
+    }
   }
 }
 
@@ -203,11 +212,11 @@ void UART0_Stop()
   if (UART0_State == UART0_State_NotStarted)
     return;
 
+  // Wait for any outstanding data to be sent
+  Serial.flush();
+
   // Disable UART interrupt in NVIC
   detachInterrupt(UART0_IRQn);
-
-  // Wait for any outstanding data to be sent
-  UART0_FlushTX();
 
   NRF_UART0->TASKS_STOPTX = 1;
   NRF_UART0->TASKS_STOPRX = 1;
@@ -219,20 +228,21 @@ void UART0_FlushTX()
 {
   if (UART0_State == UART0_State_AfterFirstTX)
   {
-    // wait for transmission to complete
-    while (! NRF_UART0->EVENTS_TXDRDY)
+    // wait for last transmission to complete
+    while (! UART0_TXReady())
       ;
   }
 }
 
+// delegate to serial for syscalls/write and error messages
 void UART0_TX( const uint8_t uc_data )
 {
-  // if UART0 is not started, then setting TXD is ignored and UART0_FlushTX is already protected
+  Serial.write( uc_data );
+}
 
-  UART0_FlushTX();
-
+void UART0_TXD( const uint8_t uc_data )
+{
   // tx byte
-  NRF_UART0->EVENTS_TXDRDY = 0;
   NRF_UART0->TXD = uc_data;
 
   // don't change start if not started
@@ -247,6 +257,11 @@ void UART0_TX( const uint8_t uc_data )
 void UART0_RXReset()
 {
   NRF_UART0->EVENTS_RXDRDY = 0;
+}
+
+void UART0_TXReset()
+{
+  NRF_UART0->EVENTS_TXDRDY = 0;
 }
 
 int UART0_RXErrorReset()

@@ -111,7 +111,7 @@ static inline bool TWI_STATUS_DNACK(uint32_t status) {
 TwoWire::TwoWire(NRF_TWI_Type *_twi) :
 	twi(_twi), rxBufferIndex(0), rxBufferLength(0), txAddress(0),
 			txBufferLength(0), srvBufferIndex(0), srvBufferLength(0),
-      status(UNINITIALIZED), speed(100)
+      status(UNINITIALIZED), speed(100), PPI_channel(255)
 {
 	// Empty
 }
@@ -125,11 +125,30 @@ TwoWire::TwoWire(NRF_TWI_Type *_twi) :
  */
 bool TwoWire::twi_master_clear_bus(void)
 {
+	uint32_t twi_state;
     bool bus_clear;
 
+	// Save and disable TWI hardware so software can take control over the pins.
+    twi_state = twi->ENABLE;
+    twi->ENABLE = TWI_ENABLE_ENABLE_Disabled << TWI_ENABLE_ENABLE_Pos;
+
+    NRF_GPIO->PIN_CNF[SCL_pin_number] =
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos)
+      | (GPIO_PIN_CNF_DRIVE_H0D1     << GPIO_PIN_CNF_DRIVE_Pos)
+      | (GPIO_PIN_CNF_PULL_Pullup    << GPIO_PIN_CNF_PULL_Pos)
+      | (GPIO_PIN_CNF_INPUT_Connect  << GPIO_PIN_CNF_INPUT_Pos)
+      | (GPIO_PIN_CNF_DIR_Output     << GPIO_PIN_CNF_DIR_Pos);
+
+    NRF_GPIO->PIN_CNF[SDA_pin_number] =
+        (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos)
+      | (GPIO_PIN_CNF_DRIVE_H0D1     << GPIO_PIN_CNF_DRIVE_Pos)
+      | (GPIO_PIN_CNF_PULL_Pullup    << GPIO_PIN_CNF_PULL_Pos)
+      | (GPIO_PIN_CNF_INPUT_Connect  << GPIO_PIN_CNF_INPUT_Pos)
+      | (GPIO_PIN_CNF_DIR_Output     << GPIO_PIN_CNF_DIR_Pos);
+
     NRF_GPIO->OUTSET = (1UL << SDA_pin_number);
-	NRF_GPIO->OUTSET = (1UL << SCL_pin_number);
-	TWI_DELAY();
+  	NRF_GPIO->OUTSET = (1UL << SCL_pin_number);
+  	TWI_DELAY();
 
     if (((NRF_GPIO->IN >> SDA_pin_number) & 0x1UL) && ((NRF_GPIO->IN >> SCL_pin_number) & 0x1UL))
     {
@@ -156,7 +175,25 @@ bool TwoWire::twi_master_clear_bus(void)
         }
     }
 
+	twi->ENABLE = twi_state;
+
     return bus_clear;
+}
+
+// TWI module lock-up (PAN 56)
+void TwoWire::twi_peripheral_recovery(void)
+{
+    twi->ENABLE = TWI_ENABLE_ENABLE_Disabled << TWI_ENABLE_ENABLE_Pos;
+
+    *(uint32_t *)((uint32_t)twi + 0xFFC) = 0;
+
+    delayMicroseconds(5);
+
+    *(uint32_t *)((uint32_t)twi + 0xFFC) = 1;
+
+    twi->ENABLE = TWI_ENABLE_ENABLE_Enabled << TWI_ENABLE_ENABLE_Pos;
+
+    twi_master_init();
 }
 
 bool TwoWire::twi_master_init(void)
@@ -167,14 +204,14 @@ bool TwoWire::twi_master_init(void)
     */
     NRF_GPIO->PIN_CNF[SCL_pin_number] =
         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos)
-      | (GPIO_PIN_CNF_DRIVE_S0D1     << GPIO_PIN_CNF_DRIVE_Pos)
+      | (GPIO_PIN_CNF_DRIVE_H0D1     << GPIO_PIN_CNF_DRIVE_Pos)
       | (GPIO_PIN_CNF_PULL_Pullup    << GPIO_PIN_CNF_PULL_Pos)
       | (GPIO_PIN_CNF_INPUT_Connect  << GPIO_PIN_CNF_INPUT_Pos)
       | (GPIO_PIN_CNF_DIR_Input      << GPIO_PIN_CNF_DIR_Pos);
 
     NRF_GPIO->PIN_CNF[SDA_pin_number] =
         (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos)
-      | (GPIO_PIN_CNF_DRIVE_S0D1     << GPIO_PIN_CNF_DRIVE_Pos)
+      | (GPIO_PIN_CNF_DRIVE_H0D1     << GPIO_PIN_CNF_DRIVE_Pos)
       | (GPIO_PIN_CNF_PULL_Pullup    << GPIO_PIN_CNF_PULL_Pos)
       | (GPIO_PIN_CNF_INPUT_Connect  << GPIO_PIN_CNF_INPUT_Pos)
       | (GPIO_PIN_CNF_DIR_Input      << GPIO_PIN_CNF_DIR_Pos);
@@ -191,14 +228,21 @@ bool TwoWire::twi_master_init(void)
       freq = TWI_FREQUENCY_FREQUENCY_K400;
     twi->FREQUENCY = freq;
 
-    PPI_channel = find_free_PPI_channel(255);
+    if (PPI_channel == 255)
+    {
+      PPI_channel = find_free_PPI_channel(255);
+      if (PPI_channel == 255)
+        Serial.println("no free PPI channels for twi");
+    }
 
     // reserve the PPI channel
     rfduino_ppi_channel_assign(PPI_channel, 0, 0);
 
     twi->ENABLE = TWI_ENABLE_ENABLE_Enabled << TWI_ENABLE_ENABLE_Pos;
 
-    return twi_master_clear_bus();
+	twi_master_clear_bus();
+
+    return true;
 }
 
 uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t issue_stop_condition)
@@ -229,8 +273,43 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
 
         if(timeout == 0)
         {
-            /* timeout before receiving event*/
-            return bytes_received;
+            // unassign the PPI channel (but keep it reserved)
+            rfduino_ppi_channel_assign(PPI_channel, 0, 0);
+
+            // NACK received after sending the address
+            if (twi->ERRORSRC & TWI_ERRORSRC_ANACK_Msk)
+            {
+              twi->ERRORSRC |= TWI_ERRORSRC_ANACK_Clear << TWI_ERRORSRC_ANACK_Pos;
+
+              twi->EVENTS_STOPPED = 0;
+              twi->TASKS_STOP = 1;
+              /* wait until stop sequence is sent and clear the EVENTS_STOPPED */
+              while (twi->EVENTS_STOPPED == 0)
+              {
+              }
+
+              return 0;
+            }
+
+            // NACK received after sending a data-byte
+            if (twi->ERRORSRC & TWI_ERRORSRC_DNACK_Msk)
+            {
+              twi->ERRORSRC |= TWI_ERRORSRC_DNACK_Clear << TWI_ERRORSRC_DNACK_Pos;
+
+              twi->EVENTS_STOPPED = 0;
+              twi->TASKS_STOP = 1;
+              /* wait until stop sequence is sent and clear the EVENTS_STOPPED */
+              while (twi->EVENTS_STOPPED == 0)
+              {
+              }
+
+              return 0;
+            }
+
+            // TWI module lock-up (PAN 56)
+            twi_peripheral_recovery();
+
+            return 0;
         }
 
         twi->EVENTS_RXDREADY = 0;
@@ -248,6 +327,9 @@ uint8_t TwoWire::twi_master_read(uint8_t *data, uint8_t data_length, uint8_t iss
 
         if (data_length == 0)
             break;
+
+        // TWI module lock-up (PAN 56)
+        delayMicroseconds(20);
 
         twi->TASKS_RESUME = 1;
     }
@@ -287,7 +369,39 @@ uint8_t TwoWire::twi_master_write(uint8_t *data, uint8_t data_length, uint8_t is
 
         if (timeout == 0)
         {
-            /* timeout before receiving event*/
+            // NACK received after sending the address
+            if (twi->ERRORSRC & TWI_ERRORSRC_ANACK_Msk)
+            {
+              twi->ERRORSRC |= TWI_ERRORSRC_ANACK_Clear << TWI_ERRORSRC_ANACK_Pos;
+
+              twi->EVENTS_STOPPED = 0;
+              twi->TASKS_STOP = 1;
+              /* wait until stop sequence is sent and clear the EVENTS_STOPPED */
+              while (twi->EVENTS_STOPPED == 0)
+              {
+              }
+
+              return 2;
+            }
+
+            // NACK received after sending a data-byte
+            if (twi->ERRORSRC & TWI_ERRORSRC_DNACK_Msk)
+            {
+              twi->ERRORSRC |= TWI_ERRORSRC_DNACK_Clear << TWI_ERRORSRC_DNACK_Pos;
+
+              twi->EVENTS_STOPPED = 0;
+              twi->TASKS_STOP = 1;
+              /* wait until stop sequence is sent and clear the EVENTS_STOPPED */
+              while (twi->EVENTS_STOPPED == 0)
+              {
+              }
+
+              return 3;
+            }
+
+            // TWI module lock-up (PAN 56)
+            twi_peripheral_recovery();
+
             return 4;
         }
 
@@ -353,7 +467,7 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint8_t sendStop
 	if(quantity > BUFFER_LENGTH)
 		quantity = BUFFER_LENGTH;
 
-	if (quantity > 0 && twi_master_clear_bus())
+	if (quantity > 0)
     {
         twi->ADDRESS = address;
         readed = twi_master_read(rxBuffer, quantity, sendStop);
@@ -405,7 +519,7 @@ void TwoWire::beginTransmission(int address) {
 //
 uint8_t TwoWire::endTransmission(uint8_t sendStop) {
 	uint8_t ret = 4;
-	if (txBufferLength > 0 && twi_master_clear_bus())
+	if (txBufferLength > 0)
     {
         twi->ADDRESS = txAddress;
 		// transmit buffer (blocking)

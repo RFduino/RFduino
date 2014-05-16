@@ -1,5 +1,12 @@
 CHANGELOG
 
+v 1.9
+  - i2c enhancements
+  - UART TX buffering
+  - Changed examples comment to indicate that Advertisement length and
+    deviceName length must be <= 15 bytes
+  - Added header to WString.h to so F() always available
+
 v 1.8.2
   - Added support for modifying the iBeacon measured power level at 1 meter
   - Fix for analogWrite and RFduinoGZLL (thanks tolson)

@@ -10,7 +10,7 @@ It is suppose to be used with the rfduinoTemperature iPhone application.
 
 void setup() {
   // this is the data we want to appear in the advertisement
-  // (the deviceName length plus the advertisement length must be <= 18 bytes)
+  // (the deviceName length plus the advertisement length must be <= 15 bytes)
   RFduinoBLE.advertisementData = "temp";
 
   // start the BLE stack
