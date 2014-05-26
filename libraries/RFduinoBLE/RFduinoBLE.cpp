@@ -33,6 +33,7 @@ RFduinoBLEClass::RFduinoBLEClass()
 {
   ::RFduinoBLE_used = 1;
 
+  customUUID = "";
 	deviceName = "RFduino";
 	advertisementData = "sketch";
   iBeacon = false;
@@ -69,6 +70,7 @@ int RFduinoBLEClass::begin()
     }
   }
 
+  RFduinoBLE_custom_uuid = customUUID;
   RFduinoBLE_device_name = deviceName;
   RFduinoBLE_advertisement_data = advertisementData;
   RFduinoBLE_ibeacon = iBeacon;

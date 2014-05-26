@@ -63,7 +63,7 @@ static CBUUID *service_uuid;
     self = [super init];
     
     if (self) {
-        service_uuid = [CBUUID UUIDWithString:@"2220"];
+        service_uuid = [CBUUID UUIDWithString:(customUUID ? customUUID : @"2220")];
         
         rfduinos = [[NSMutableArray alloc] init];
         

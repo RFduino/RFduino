@@ -41,6 +41,9 @@ uint8_t dataByte(NSData *data);
 int dataInt(NSData *data);
 float dataFloat(NSData *data);
 
+// default NULL (NULL = previous fixed RFduino uuid)
+extern NSString *customUUID;
+
 @interface RFduino : NSObject<CBPeripheralDelegate>
 {
 }

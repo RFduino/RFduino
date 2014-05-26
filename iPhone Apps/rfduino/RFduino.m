@@ -30,6 +30,9 @@
 
 static const int max_data = 12;
 
+// default NULL (NULL = previous fixed RFduino uuid)
+NSString *customUUID = NULL;
+
 static CBUUID *service_uuid;
 static CBUUID *send_uuid;
 static CBUUID *receive_uuid;
@@ -59,6 +62,17 @@ float dataFloat(NSData *data)
     uint8_t *p = (uint8_t*)[data bytes];
     NSUInteger len = [data length];
     return (sizeof(float) <= len ? *(float*)p : 0);
+}
+
+// increment the 16-bit uuid inside a 128-bit uuid
+static void incrementUuid16(CBUUID *uuid, unsigned char amount)
+{
+    NSData *data = uuid.data;
+    unsigned char *bytes = (unsigned char *)[data bytes];
+    unsigned char result = bytes[3] + amount;
+    if (result < bytes[3])
+        bytes[2]++;
+    bytes[3] += amount;
 }
 
 @interface RFduino()
@@ -97,11 +111,16 @@ float dataFloat(NSData *data)
 {
     NSLog(@"rfduino connected");
     
-    service_uuid = [CBUUID UUIDWithString:@"2220"];
-    send_uuid = [CBUUID UUIDWithString:@"2222"];
-    receive_uuid = [CBUUID UUIDWithString:@"2221"];
-    disconnect_uuid = [CBUUID UUIDWithString:@"2223"];
-    
+    service_uuid = [CBUUID UUIDWithString:(customUUID ? customUUID : @"2220")];
+    receive_uuid = [CBUUID UUIDWithString:(customUUID ? customUUID : @"2221")];
+    if (customUUID)
+        incrementUuid16(receive_uuid, 1);
+    send_uuid = [CBUUID UUIDWithString:(customUUID ? customUUID : @"2222")];
+    if (customUUID)
+        incrementUuid16(send_uuid, 2);
+    disconnect_uuid = [CBUUID UUIDWithString:(customUUID ? customUUID : @"2223")];
+    if (customUUID)
+        incrementUuid16(disconnect_uuid, 3);
     peripheral.delegate = self;
     
     [peripheral discoverServices:[NSArray arrayWithObject:service_uuid]];

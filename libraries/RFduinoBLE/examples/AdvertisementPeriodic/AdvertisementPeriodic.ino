@@ -21,7 +21,9 @@ int duration = SECONDS(5);
 void advertise(const char *data, uint32_t ms)
 {
   // this is the data we want to appear in the advertisement
-  // (the deviceName length plus the advertisement length must be <= 15 bytes
+  // (if the deviceName and advertisementData are too long to fix into the 31 byte
+  // ble advertisement packet, then the advertisementData is truncated first down to
+  // a single byte, then it will truncate the deviceName)
   RFduinoBLE.advertisementData = data;
   
   // start the BLE stack

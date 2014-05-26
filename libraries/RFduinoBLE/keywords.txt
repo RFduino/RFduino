@@ -11,20 +11,35 @@ RFduinoBLE	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
+customUUID	KEYWORD2
 deviceName	KEYWORD2
 advertisementData	KEYWORD2
+iBeacon	KEYWORD2
+iBeaconUUID	KEYWORD2
+iBeaconMajor	KEYWORD2
+iBeaconMinor	KEYWORD2
+iBeaconMeasuredPower	KEYWORD2
 advertisementInterval	KEYWORD2
 txPowerLevel	KEYWORD2
+radioActive	KEYWORD2
 
 begin	KEYWORD2
 end KEYWORD2
 send	KEYWORD2
+sendByte	KEYWORD2
+sendInt	KEYWORD2
+sendFloat	KEYWORD2
 
 RFduinoBLE_onAdvertisement	KEYWORD2
 RFduinoBLE_onRssi		KEYWORD2
 RFduinoBLE_onConnect	KEYWORD2
 RFduinoBLE_onDisconnect	KEYQORD2
 RFduinoBLE_onReceive	KEYWORD2
+
+RFduinoBLE_advdata	KEYWORD2
+RFduinoBLE_advdata_len	KEYWORD2
+RFduinoBLE_srdata	KEYWORD2
+RFduinoBLE_srdata_len	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)

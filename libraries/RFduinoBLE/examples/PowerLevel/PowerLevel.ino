@@ -13,7 +13,9 @@ void setup() {
   pinMode(led, OUTPUT);
 
   // this is the data we want to appear in the advertisement
-  // (the deviceName length plus the advertisement length must be <= 15 bytes
+  // (if the deviceName and advertisementData are too long to fix into the 31 byte
+  // ble advertisement packet, then the advertisementData is truncated first down to
+  // a single byte, then it will truncate the deviceName)
   RFduinoBLE.advertisementData = "data";
 
   // set the transmit power level in dBm (-20 dBm to +4 dBm)

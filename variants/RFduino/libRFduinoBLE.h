@@ -16,6 +16,9 @@
 extern "C" {
 #endif // __cplusplus
 
+// default NULL (NULL/"" = previous fixed RFduino uuid)
+extern const char *RFduinoBLE_custom_uuid;
+
 // default "RFduino"
 extern const char *RFduinoBLE_device_name;
 
@@ -37,11 +40,17 @@ extern unsigned short RFduinoBLE_ibeacon_major;
 // default 0
 extern unsigned short RFduinoBLE_ibeacon_minor;
 
-// default 2's complement iBeacon Power Measurement at 1 meter (default is 0xC6 = -58dBm)
+// default 2's complement iBeacon Power Measurement at 1 meter (default is 0xC5 = -59dBm)
 extern unsigned char RFduinoBLE_ibeacon_measured_power;
 
 // -20 dBm to +4 dBm - default +4 dBm
 extern int8_t RFduinoBLE_tx_power_level;
+
+// use with caution: advanced raw access to the advertisement and scan response packets
+extern uint8_t *RFduinoBLE_advdata;
+extern uint8_t RFduinoBLE_advdata_len;
+extern uint8_t *RFduinoBLE_srdata;
+extern uint8_t RFduinoBLE_srdata_len;
 
 extern void RFduinoBLE_onAdvertisement(bool start)     __attribute__((weak));
 // received signal strength indication (-0dBm to -127dBm)
@@ -54,13 +63,19 @@ extern void RFduinoBLE_onReceive(char *data, int len)  __attribute__((weak));
 // 1 = device_name + advertisement_data invalid (> 18)
 // 2 = tx_power_level invalid (< -20 || > +4)
 // 3 = advertisement_interval invalid (< 20ms || > 10.24s)
+
+// Now always returns 0 (success) and does a best effort to accomodate the users request.
+// This means that it is no longer necessary to check the return value, and being off
+// by one byte doesn't stop the device from advertising.
+// on advertisement packet overflow, it will truncate the advertisement data first down
+// to a single byte, then it will truncate the device name.  if the tx_power_level is
+// outside the limits, its modified to the boundary level value.  the same boundary logic
+// is also applied to the advertisement_interval.
 int RFduinoBLE_begin(void);
 
 void RFduinoBLE_end(void);
 
 bool RFduinoBLE_send(const char *data, uint8_t len);
-
-// void RFduinoBLE_wait_for_event(void);
 
 #ifdef __cplusplus
 }

@@ -1,5 +1,11 @@
 CHANGELOG
 
+v 2.0
+  - 128-bit custom UUID enhancement
+  - raw advertisement packet access
+  - RFduinoBLE.begin() now truncates (instead of failing) if the advertisement
+    packet length is exceeded.  No more counting deviceName/advertisementData.
+    
 v 1.9
   - i2c enhancements
   - UART TX buffering

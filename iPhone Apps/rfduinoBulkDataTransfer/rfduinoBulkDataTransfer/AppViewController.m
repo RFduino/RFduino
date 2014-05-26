@@ -55,6 +55,11 @@ and kbps.
 
 @synthesize rfduino;
 
++ (void)load
+{
+    // customUUID = @"c97433f0-be8f-4dc8-b6f0-5343e6100eb4";
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
