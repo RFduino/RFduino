@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 2.0.1
+  - RFduinoGZLL enhancement for channel selection policy
+  - allow build.bat "run as administrator"
+
 v 2.0
   - 128-bit custom UUID enhancement
   - raw advertisement packet access

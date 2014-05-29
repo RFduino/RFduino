@@ -8,6 +8,8 @@ echo Error: The Nordic SDK is required to build libRFduinoGZLL.
 goto end
 )
 
+cd %arduino%\hardware\arduino\RFduino\source\libRFduinoGZLL
+
 if not exist _build\nul mkdir _build
 if exist _build\* del /q _build\*
 

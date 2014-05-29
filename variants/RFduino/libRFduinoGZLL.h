@@ -62,6 +62,7 @@ extern void RFduinoGZLL_onReceive(device_t device, int rssi, char *data, int len
 // 1 = init failed
 // 2 = set tx_power failed
 // 3 = enabled failed
+// 4 = set channel selection policy failed
 int RFduinoGZLL_begin(device_t device);
 
 void RFduinoGZLL_end(void);

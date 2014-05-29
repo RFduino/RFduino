@@ -50,6 +50,7 @@ static device_t _device;
 // 1 = init failed
 // 2 = set tx_power failed
 // 3 = enabled failed
+// 4 = set channel selection policy failed
 int RFduinoGZLL_begin(device_t device)
 {
   _device = device;
@@ -77,6 +78,9 @@ int RFduinoGZLL_begin(device_t device)
 
   if (! nrf_gzll_set_tx_power(tx_power))
     return 2;
+
+  if (! nrf_gzll_set_device_channel_selection_policy(NRF_GZLL_DEVICE_CHANNEL_SELECTION_POLICY_USE_CURRENT))
+    return 4;
 
   if (! nrf_gzll_enable())
     return 3;
