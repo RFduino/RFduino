@@ -114,4 +114,14 @@ bool RFduinoBLEClass::sendFloat(float data)
   return RFduinoBLE_send((char*)&data, sizeof(float));
 }
 
+void RFduinoBLEClass::updateConnInterval(int min_conn_interval_ms, int max_conn_interval_ms)
+{
+  RFduinoBLE_update_conn_interval(min_conn_interval_ms, max_conn_interval_ms);
+}
+
+int RFduinoBLEClass::getConnInterval(void)
+{
+  return RFduinoBLE_get_conn_interval();
+}
+
 RFduinoBLEClass RFduinoBLE;

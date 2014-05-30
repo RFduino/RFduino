@@ -1,6 +1,9 @@
 /*
 This RFduino sketch demonstrates a full bi-directional Bluetooth Low
 Energy 4 connection between an iPhone application and an RFduino.
+This sketch also demonstrates how to select a slower connection
+interval, which will slow down the response rate, but also drastically
+reduce the power consumption of the RFduino.
 
 This sketch works with the rfduinoLedButton iPhone application.
 
@@ -52,6 +55,8 @@ int debounce_time = 10;
 int debounce_timeout = 100;
 
 void setup() {
+  Serial.begin(9600);
+  
   // led turned on/off from the iPhone app
   pinMode(led, OUTPUT);
 
@@ -112,6 +117,28 @@ void loop() {
   
   delay_until_button(LOW);
   RFduinoBLE.send(0);
+
+  // uncomment here to update the connection interval after the first button press  
+  // RFduinoBLE_update_conn_interval(900,1000);
+  
+  // display the connection interval the iPhone actually selected after a button press
+  int connInterval = RFduinoBLE.getConnInterval();
+  Serial.println(connInterval);
+}
+
+void RFduinoBLE_onConnect()
+{
+  // request central role use a different connection interval in the given range
+  // the central role may reject the request (or even pick a value outside the range)
+  // we will request something in the 900ms to 1100ms range
+  // the actual rate the iPhone uses is 1098ms
+  // the best way to get the connection interval you are after is trail and error
+  // if the iPhone rejects the request, the connection interval will be the default (25ms)
+  RFduinoBLE.updateConnInterval(900, 1100);
+
+  // note: you cannot use delay()/RFduinoBLE.getConnInterval() here to determine which
+  // connection interval the iPhone selected - getConnInterval() must be called from
+  // either loop() or onReceive()
 }
 
 void RFduinoBLE_onDisconnect()
@@ -122,6 +149,10 @@ void RFduinoBLE_onDisconnect()
 
 void RFduinoBLE_onReceive(char *data, int len)
 {
+  // display the connection interval the iPhone actually selected after a button press
+  int connInterval = RFduinoBLE.getConnInterval();
+  Serial.println(connInterval);
+  
   // if the first byte is 0x01 / on / true
   if (data[0])
     digitalWrite(led, HIGH);

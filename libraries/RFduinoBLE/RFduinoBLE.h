@@ -73,6 +73,12 @@ public:
   bool sendByte(uint8_t data);
   bool sendInt(int data);
   bool sendFloat(float data);
+  
+  // request central role use a different connection interval in the given range
+  // the central role may reject the request (or even pick a value outside the range)
+  void updateConnInterval(int min_conn_interval_ms, int max_conn_interval_ms);
+
+  int getConnInterval(void);
 };
 
 extern RFduinoBLEClass RFduinoBLE;

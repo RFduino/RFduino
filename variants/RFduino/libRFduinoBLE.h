@@ -77,6 +77,12 @@ void RFduinoBLE_end(void);
 
 bool RFduinoBLE_send(const char *data, uint8_t len);
 
+// request central role use a different connection interval in the given range
+// the central role may reject the request (or even pick a value outside the range)
+void RFduinoBLE_update_conn_interval(int min_conn_interval_ms, int max_conn_interval_ms);
+
+int RFduinoBLE_get_conn_interval(void);
+
 #ifdef __cplusplus
 }
 #endif
