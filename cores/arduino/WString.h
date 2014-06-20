@@ -195,6 +195,8 @@ public:
 
 	// parsing/conversion
 	long toInt(void) const;
+  
+  const char *cstr() const { return buffer; }
 
 protected:
 	char *buffer;	        // the actual char array

@@ -55,7 +55,7 @@ class UARTClass : public HardwareSerial
 {
   protected:
     RingBuffer *_rx_buffer, *_tx_buffer ;
-    bool transmitting;
+    volatile bool transmitting;
     void tx( void );
 
   public:

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013 OpenSourceRF.com.  All right reserved.
+ Copyright (c) 2014 OpenSourceRF.com.  All right reserved.
 
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
@@ -47,6 +47,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <string.h>
 #include <math.h>
 #include "Arduino.h"
@@ -283,5 +284,78 @@ size_t Print::printFloat(double number, uint8_t digits)
     remainder -= toPrint;
   }
 
+  return n;
+}
+
+size_t Print::printf(const char *format, ...)
+{
+  va_list vl;
+  size_t n = 0;
+  
+  va_start(vl, format);
+  
+  while (*format)
+  {
+    if (*format == '%')
+    {
+      format++;
+
+      char ch = *format;
+      if (! ch)
+        break;
+      else if (ch == '%')
+        n += print(*format);
+      else if (ch == 'b')
+      {
+        unsigned u = va_arg(vl, unsigned);
+        n += print(u, BIN);
+      }
+      else if (ch == 'c')
+      {
+        int ch = va_arg(vl, int);
+        n += print((char)ch);
+      }
+      else if (ch == 'd')
+      {
+        int i = va_arg(vl, int);
+        n += print(i);
+      }
+      else if (ch == 'u')
+      {
+        unsigned u = va_arg(vl, unsigned);
+        n += print(u);
+      }
+      else if (ch == 'x')
+      {
+        unsigned x = va_arg(vl, unsigned);
+        n += print(x, HEX);
+      }
+      else if (ch == 's')
+      {
+        char *s = va_arg(vl, char *);
+        n += print(s);
+      }
+      else if (ch == 'f')
+      {
+        double d = va_arg(vl, double);
+        long l = d;
+        n += print(l);
+        n += print('.');
+        d *= 100;
+        l = d;
+        if (l < 1)
+          l = -l;
+        l %= 100;
+        n += print(l);
+      }
+    }
+    else
+     n += print(*format);
+    
+    format++;
+  }
+  
+  va_end(vl);
+  
   return n;
 }

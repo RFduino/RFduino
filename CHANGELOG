@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 2.0.3
+  - Added printf() support to Serial (see RFduinoNonBLE/Printf sketch)
+  - Fixed issue with Serial.flush()/Serial.end() when switching TX/RX pins
+
 v 2.0.2
   - Added connection interval update support
   - Added missing copyright notices to sketches

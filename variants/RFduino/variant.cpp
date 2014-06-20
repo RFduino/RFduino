@@ -215,23 +215,28 @@ void UART0_Stop()
   // Wait for any outstanding data to be sent
   Serial.flush();
 
+  NRF_UART0->TASKS_STOPTX = 1;
+  NRF_UART0->TASKS_STOPRX = 1;
+
+  NRF_UART0->ENABLE       = (UART_ENABLE_ENABLE_Disabled << UART_ENABLE_ENABLE_Pos);
+
   // Disable UART interrupt in NVIC
   detachInterrupt(UART0_IRQn);
 
-  NRF_UART0->TASKS_STOPTX = 1;
-  NRF_UART0->TASKS_STOPRX = 1;
+  // Disconnect high drive tx pin
+  int tx_pin = NRF_UART0->PSELTXD;
+  NRF_GPIO->PIN_CNF[tx_pin] = (GPIO_PIN_CNF_SENSE_Disabled << GPIO_PIN_CNF_SENSE_Pos)
+              | (GPIO_PIN_CNF_DRIVE_S0S1 << GPIO_PIN_CNF_DRIVE_Pos)
+              | (GPIO_PIN_CNF_PULL_Pullup << GPIO_PIN_CNF_PULL_Pos)
+              | (GPIO_PIN_CNF_INPUT_Connect << GPIO_PIN_CNF_INPUT_Pos)
+              | (GPIO_PIN_CNF_DIR_Input << GPIO_PIN_CNF_DIR_Pos);                    
 
   UART0_State = UART0_State_NotStarted;
 }
 
 void UART0_FlushTX()
 {
-  if (UART0_State == UART0_State_AfterFirstTX)
-  {
-    // wait for last transmission to complete
-    while (! UART0_TXReady())
-      ;
-  }
+  Serial.flush(); 
 }
 
 // delegate to serial for syscalls/write and error messages

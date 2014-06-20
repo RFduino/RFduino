@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2013 OpenSourceRF.com.  All right reserved.
+ Copyright (c) 2014 OpenSourceRF.com.  All right reserved.
 
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
@@ -102,6 +102,9 @@ class Print
     size_t println(double, int = 2);
     size_t println(const Printable&);
     size_t println(void);
+    
+    // supports c,d,u,x,s,f,b
+    size_t printf(const char *, ...);
 };
 
 #endif

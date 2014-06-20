@@ -106,10 +106,8 @@ int UARTClass::read( void )
 void UARTClass::flush( void )
 {
   // Wait for any outstanding data to be sent
-  while (_tx_buffer->_iTail != _tx_buffer->_iHead)
+  while (transmitting)
     ;
-
-  UART0_FlushTX();
 }
 
 void UARTClass::tx( void )
