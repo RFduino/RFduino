@@ -1,6 +1,6 @@
 @echo off
 
-set arduino=C:\arduino-1.5.5
+set arduino=C:\arduino-1.5.7
 set nordic="C:\Nordic Semiconductor\nRF51 SDK_v4.2.0.25053\Nordic\nrf51822"
 
 if not exist %nordic% (
@@ -13,7 +13,7 @@ cd %arduino%\hardware\arduino\RFduino\source\libRFduinoGZLL
 if not exist _build\nul mkdir _build
 if exist _build\* del /q _build\*
 
-set tools=%arduino%\hardware\tools\g++_arm_none_eabi
+set tools=%arduino%\hardware\tools\gcc-arm-none-eabi-4.8.3-2014q1
 set RFduino=%arduino%\hardware\arduino\RFduino
 
 set gcc=%tools%\bin\arm-none-eabi-gcc
@@ -23,8 +23,7 @@ set includes=-I%nordic%\Include
 set includes=%includes% -I%nordic%\Include\gzll
 set includes=%includes% -I%nordic%\Include\gcc
 
-rem set cflags=--param max-inline-insns-single=500
-set cflags=-Os -w -mcpu=cortex-m0 -mthumb -DNRF51 -DBOARD_PCA10001 -ffunction-sections -fdata-sections -nostdlib -fno-rtti -fno-exceptions --param max-inline-insns-single=500 -Dprintf=iprintf %includes%
+set cflags=-Os -w -mcpu=cortex-m0 -mthumb -DNRF51 -DBOARD_PCA10001 -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fno-builtin %includes%
 
 echo compiling...
 

@@ -1,21 +1,31 @@
 
 startup_nrf51822.o:
+         U __libc_init_array
+         U _erelocate
+         U _estack
+         U _etext
+         U _ezero
+         U _srelocate
+         U _szero
 00000000 W ADC_IRQHandler
 00000000 W CCM_AAR_IRQHandler
 00000000 T Default_Dynamic_Handler
 00000000 T Default_Handler
+00000000 D dynamic_handlers
 00000000 W ECB_IRQHandler
+00000000 D exception_handlers
 00000000 W GPIOTE_IRQHandler
 00000000 W HardFault_Handler
+         U main
 00000000 W NMI_Handler
-00000000 W POWER_CLOCK_IRQHandler
 00000000 W PendSV_Handler
+00000000 W POWER_CLOCK_IRQHandler
 00000000 W QDEC_IRQHandler
 00000000 W RADIO_IRQHandler
+00000000 T Reset_Handler
 00000000 W RNG_IRQHandler
 00000000 W RTC0_IRQHandler
 00000000 W RTC1_IRQHandler
-00000000 T Reset_Handler
 00000000 W SPI0_TWI0_IRQHandler
 00000000 W SPI1_TWI1_IRQHandler
 00000000 W SVC_Handler
@@ -25,26 +35,16 @@ startup_nrf51822.o:
 00000000 W SWI3_IRQHandler
 00000000 W SWI4_IRQHandler
 00000000 W SWI5_IRQHandler
-00000000 W SysTick_Handler
          U SystemInit
+00000000 W SysTick_Handler
 00000000 W TEMP_IRQHandler
 00000000 W TIMER0_IRQHandler
 00000000 W TIMER1_IRQHandler
 00000000 W TIMER2_IRQHandler
 00000000 W UART0_IRQHandler
+00000000 R vector_table
 00000000 W WDT_IRQHandler
 00000000 W WUCOMP_IRQHandler
-         U __libc_init_array
-         U _erelocate
-         U _estack
-         U _etext
-         U _ezero
-         U _srelocate
-         U _szero
-00000000 D dynamic_handlers
-00000000 D exception_handlers
-         U main
-00000000 R vector_table
 
 system_nrf51.o:
 00000000 D SystemCoreClock
