@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 2.1.1
+  - Fix an issue with RFduinoBLE.begin() not starting in an isolated case.
+  - Fix to case of include directory in boards.txt (thanks jrobeson).
+
 v 2.1
   - Fixes required to support Arduino 1.5.7
     (NOTE: Arduino 1.5.7 or higher is now required for RFduino 2.1 or above).
