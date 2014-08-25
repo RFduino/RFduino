@@ -194,6 +194,8 @@ uint64_t getDeviceId();
 
 extern bool override_uart_limit;
 
+#define UART_BAUDRATE_BAUDRATE_Baud31250 (0x00800000UL) /*!< 31250 baud.(MIDI)  */
+
 #ifdef __cplusplus
 }
 #endif

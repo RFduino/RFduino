@@ -118,6 +118,7 @@ int UART0_BaudRate()
     case UART_BAUDRATE_BAUDRATE_Baud14400: return 14400;
     case UART_BAUDRATE_BAUDRATE_Baud19200: return 19200;
     case UART_BAUDRATE_BAUDRATE_Baud28800: return 28800;
+    case UART_BAUDRATE_BAUDRATE_Baud31250: return 31250;
     case UART_BAUDRATE_BAUDRATE_Baud38400: return 38400;
     case UART_BAUDRATE_BAUDRATE_Baud57600: return 57600;
     case UART_BAUDRATE_BAUDRATE_Baud76800: return 76800;
@@ -162,6 +163,7 @@ void UART0_Start( int dwBaudRate, uint8_t rx_pin, uint8_t tx_pin )
     case 14400: dw = UART_BAUDRATE_BAUDRATE_Baud14400; break;
     case 19200: dw = UART_BAUDRATE_BAUDRATE_Baud19200; break;
     case 28800: dw = UART_BAUDRATE_BAUDRATE_Baud28800; break;
+    case 31250: dw = UART_BAUDRATE_BAUDRATE_Baud31250; break;
     case 38400: dw = UART_BAUDRATE_BAUDRATE_Baud38400; break;
     case 57600: dw = UART_BAUDRATE_BAUDRATE_Baud57600; break;
     case 76800: dw = UART_BAUDRATE_BAUDRATE_Baud76800; break;

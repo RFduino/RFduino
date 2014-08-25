@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 2.1.2
+  - Support for MIDI BaudRate of 31250 (thanks tolson)
+  - Fix so Servo can be moved from TIMER2 to TIMER1 for use with RFduinoGZLL
+
 v 2.1.1
   - Fix an issue with RFduinoBLE.begin() not starting in an isolated case.
   - Fix to case of include directory in boards.txt (thanks jrobeson).

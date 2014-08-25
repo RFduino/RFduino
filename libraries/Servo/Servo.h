@@ -105,7 +105,19 @@
 #define IRQn_FOR_TIMER2     		TIMER2_IRQn
 #endif
 
-typedef enum { _timer2, _timer1, _timer0, _Nbr_16timers } timer16_Sequence_t ;
+typedef enum
+{
+#ifdef _useTimer2
+  _timer2,
+#endif
+#ifdef _useTimer1
+  _timer1,
+#endif
+#ifdef _useTimer0
+  _timer0,
+#endif
+  _Nbr_16timers
+} timer16_Sequence_t ;
 
 #define Servo_VERSION           2      // software version of this library
 

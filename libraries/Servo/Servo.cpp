@@ -154,9 +154,6 @@ void Servo_Handler(timer16_Sequence_t timer, NRF_TIMER_Type *tc, uint8_t channel
 
 static void _initISR(NRF_TIMER_Type *tc, uint32_t channel, uint32_t intenset, IRQn_Type irqn, void (*callback)(void))
 {
-	__disable_irq();
-	//*(uint32_t *)0x40000504 = 0xC007FFDF; // Workaround for PAN_028 rev1.1 anomaly 23 - System: Manual setup is required to enable use of peripherals
-
 	// Timer/Counter setup
 	tc->TASKS_STOP = 1;
 	tc->MODE = TIMER_MODE_MODE_Timer;
@@ -170,9 +167,7 @@ static void _initISR(NRF_TIMER_Type *tc, uint32_t channel, uint32_t intenset, IR
 	tc->INTENSET = intenset;
 
 	// Enable interrupt
-	//NVIC_EnableIRQ(irqn);
   attachInterrupt(irqn, callback);
-	__enable_irq();
 
 	// Start clock
 	tc->TASKS_START = 1;
