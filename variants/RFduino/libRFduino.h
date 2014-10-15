@@ -102,8 +102,8 @@ extern void RFduino_systemOff(void);
  * \param scale Either CELSIUS or FAHRENHEIT
  *
  * returns:
- *     degrees c (-198.00 to +260.00)
- *     degrees f (-128.00 to +127.00)
+ *     degrees f (-198.00 to +260.00)
+ *     degrees c (-128.00 to +127.00)
  */
 extern float RFduino_temperature(int scale);
 
