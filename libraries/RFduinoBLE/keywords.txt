@@ -21,6 +21,7 @@ iBeaconMinor	KEYWORD2
 iBeaconMeasuredPower	KEYWORD2
 advertisementInterval	KEYWORD2
 txPowerLevel	KEYWORD2
+connectable	KEYWORD2
 radioActive	KEYWORD2
 
 begin	KEYWORD2

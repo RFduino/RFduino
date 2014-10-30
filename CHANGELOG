@@ -1,5 +1,9 @@
 CHANGELOG
 
+v 2.2
+  - Support for nonconnectable advertisement
+  - Corrected temperature comments (thanks DasBasti).
+
 v 2.1.2
   - Support for MIDI BaudRate of 31250 (thanks tolson)
   - Fix so Servo can be moved from TIMER2 to TIMER1 for use with RFduinoGZLL

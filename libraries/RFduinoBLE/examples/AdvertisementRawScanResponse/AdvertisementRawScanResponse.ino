@@ -111,6 +111,10 @@ void setup() {
   RFduinoBLE_srdata = srdata;
   RFduinoBLE_srdata_len = sizeof(srdata);
 
+  // uncomment for nonconnectable advertising
+  // (nonconnectable forces a minimum 100ms advertisement_interval, >= 100ms intervals are okay)
+  // RFduinoBLE.connectable = false;
+  
   // start the BLE stack
   RFduinoBLE.begin();
 }

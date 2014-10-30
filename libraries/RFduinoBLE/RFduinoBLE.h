@@ -58,6 +58,10 @@ public:
   // -20 dBm to +4 dBm - default +4 dBm
   int txPowerLevel;
 
+  // default true (false = nonconnectable advertising)
+  // nonconnectable forces minimum of 100ms advertisement_interval
+  bool connectable;
+
   // true if the radio is active (or about to become active), false if not
   static volatile int& radioActive;
 

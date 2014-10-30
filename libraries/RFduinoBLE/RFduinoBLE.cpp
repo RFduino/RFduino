@@ -45,6 +45,7 @@ RFduinoBLEClass::RFduinoBLEClass()
   iBeaconMeasuredPower = 0xC5;
 	advertisementInterval = 80;
 	txPowerLevel = +4;
+  connectable = true;
 }
 
 int RFduinoBLEClass::begin()
@@ -80,6 +81,7 @@ int RFduinoBLEClass::begin()
   RFduinoBLE_ibeacon_measured_power = iBeaconMeasuredPower;
   RFduinoBLE_advertisement_interval = advertisementInterval;
   RFduinoBLE_tx_power_level = txPowerLevel;
+  RFduinoBLE_connectable = connectable;
 
   return RFduinoBLE_begin();
 }

@@ -52,6 +52,10 @@ extern uint8_t RFduinoBLE_advdata_len;
 extern uint8_t *RFduinoBLE_srdata;
 extern uint8_t RFduinoBLE_srdata_len;
 
+// default true (false = nonconnectable advertising)
+// (nonconnectable forces a minimum 100ms advertisement_interval, >= 100ms intervals are okay)
+extern bool RFduinoBLE_connectable;
+
 extern void RFduinoBLE_onAdvertisement(bool start)     __attribute__((weak));
 // received signal strength indication (-0dBm to -127dBm)
 extern void RFduinoBLE_onRSSI(int rssi)                __attribute__((weak));
