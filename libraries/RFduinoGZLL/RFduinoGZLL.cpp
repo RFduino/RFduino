@@ -68,6 +68,7 @@ int RFduinoGZLLClass::begin(device_t device)
 void RFduinoGZLLClass::end()
 {
   RFduinoGZLL_end();
+  NRF_RADIO->TASKS_RSSISTOP = 1;
 }
 
 bool RFduinoGZLLClass::sendToHost(const char *data, int len)

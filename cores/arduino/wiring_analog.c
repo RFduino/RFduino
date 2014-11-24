@@ -117,6 +117,7 @@ uint32_t analogRead(uint32_t ulPin)
 		ulValue = NRF_ADC->RESULT;															// Read the value
 		ulValue = mapResolution(ulValue, ADC_RESOLUTION, _readResolution);
 		NRF_ADC->ENABLE =	(ADC_ENABLE_ENABLE_Disabled 	<< ADC_ENABLE_ENABLE_Pos);		// Disable ADC
+    NRF_ADC->TASKS_STOP = 1;
 		// GPIOs release regarding PAN028
 		NRF_ADC->CONFIG = 	(ADC_CONFIG_RES_8bit << ADC_CONFIG_RES_Pos) |
 							(ADC_CONFIG_INPSEL_SupplyTwoThirdsPrescaling << ADC_CONFIG_INPSEL_Pos) |
