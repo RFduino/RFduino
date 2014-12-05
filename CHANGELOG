@@ -1,5 +1,8 @@
 CHANGELOG
 
+v 2.2.2
+  - Resolved race condition issue with analogRead.
+
 v 2.2.1
   - Resolved power consumption issues with ULP and analogRead/GZLL.
   - Update documentation with better specifics as to where you put folder
