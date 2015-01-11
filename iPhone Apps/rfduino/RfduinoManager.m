@@ -98,7 +98,9 @@ static CBUUID *service_uuid;
             
     }
 
-    [delegate shouldDisplayAlertTitled:@"Bluetooth LE Support" messageBody:message];
+    if ([delegate respondsToSelector:@selector(shouldDisplayAlertTitled:messageBody:)]) {
+        [delegate shouldDisplayAlertTitled:@"Bluetooth LE Support" messageBody:message];
+    }
 
     return NO;
 }
@@ -184,7 +186,9 @@ static CBUUID *service_uuid;
     if (error.code) {
         cancelBlock = block;
 
-        [delegate shouldDisplayAlertTitled:@"Peripheral Disconnected with Error" messageBody:error.description];
+        if ([delegate respondsToSelector:@selector(shouldDisplayAlertTitled:messageBody:)]) {
+            [delegate shouldDisplayAlertTitled:@"Peripheral Disconnected with Error" messageBody:error.description];
+        }
         
     }
     else
@@ -265,7 +269,9 @@ static CBUUID *service_uuid;
 {
     NSLog(@"didFailToConnectPeripheral");
 
-    [delegate shouldDisplayAlertTitled:@"Connect Failed" messageBody:error.description];
+    if ([delegate respondsToSelector:@selector(shouldDisplayAlertTitled:messageBody:)]) {
+        [delegate shouldDisplayAlertTitled:@"Connect Failed" messageBody:error.description];
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals
