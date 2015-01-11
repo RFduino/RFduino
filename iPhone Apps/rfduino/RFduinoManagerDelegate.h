@@ -39,5 +39,6 @@
 - (void)didConnectRFduino:(RFduino *)rfduino;
 - (void)didLoadServiceRFduino:(RFduino *)rfduino;
 - (void)didDisconnectRFduino:(RFduino *)rfduino;
+- (void)shouldDisplayAlertTitled:(NSString *)title messageBody:(NSString *)body;
 
 @end
