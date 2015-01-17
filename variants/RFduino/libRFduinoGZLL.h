@@ -55,6 +55,8 @@ typedef enum
 
 // -20 dBm to +4 dBm - default +4 dBm
 extern int RFduinoGZLL_tx_power_level;
+extern uint32_t RFduinoGZLL_host_base_address;
+extern uint32_t RFduinoGZLL_device_base_address;
 
 extern void RFduinoGZLL_onReceive(device_t device, int rssi, char *data, int len)  __attribute__((weak));
 
@@ -63,6 +65,8 @@ extern void RFduinoGZLL_onReceive(device_t device, int rssi, char *data, int len
 // 2 = set tx_power failed
 // 3 = enabled failed
 // 4 = set channel selection policy failed
+// 5 = failed to set host base address
+// 6 = failed to set devive base address
 int RFduinoGZLL_begin(device_t device);
 
 void RFduinoGZLL_end(void);

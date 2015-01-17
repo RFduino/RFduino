@@ -72,6 +72,8 @@ class RFduinoGZLLClass
 public:
   // -20 dBm to +4 dBm - default +4 dBm
   int txPowerLevel;
+  uint32_t hostBaseAddress;
+  uint32_t deviceBaseAddress;
 
 public:
   RFduinoGZLLClass();
