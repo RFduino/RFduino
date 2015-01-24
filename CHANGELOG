@@ -1,5 +1,11 @@
 CHANGELOG
 
+v 2.2.3
+  - GZLL baseAddress enhancement (thanks waynek/jetty840)
+  - Check base address msb is not 0x55 or 0xaa
+  - Updated libRFduinoGZLL keywords.txt
+  - Added DeviceToHostSettings example GZLL sketch
+
 v 2.2.2
   - Resolved race condition issue with analogRead.
 

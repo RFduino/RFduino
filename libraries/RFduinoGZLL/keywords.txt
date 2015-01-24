@@ -12,6 +12,8 @@ RFduinoGZLL	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 txPowerLevel	KEYWORD2
+hostBaseAddress	KEYWORD2
+deviceBaseAddress	KEYWORD2
 
 begin	KEYWORD2
 end KEYWORD2

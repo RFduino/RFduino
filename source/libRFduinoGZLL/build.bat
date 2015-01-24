@@ -1,6 +1,6 @@
 @echo off
 
-set arduino=C:\arduino-1.5.7
+set arduino=C:\arduino-1.5.8
 set nordic="C:\Nordic Semiconductor\nRF51 SDK_v4.2.0.25053\Nordic\nrf51822"
 
 if not exist %nordic% (

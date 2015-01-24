@@ -86,11 +86,17 @@ int RFduinoGZLL_begin(device_t device)
     return 4;
  
   if (RFduinoGZLL_host_base_address ) {
+   uint8_t msb = RFduinoGZLL_host_base_address >> 24;
+   if (msb == 0x55 || msb == 0xAA)
+     return 5;  // msb of base address should not be alternating 0s and 1s
 	 if ( !nrf_gzll_set_base_address_0(RFduinoGZLL_host_base_address) )
 		return 5;
   } 
 
   if (RFduinoGZLL_device_base_address) {
+   uint8_t msb = RFduinoGZLL_device_base_address >> 24;
+   if (msb == 0x55 || msb == 0xAA)
+     return 6;  // msb of base address should not be alternating 0s and 1s
 	 if ( !nrf_gzll_set_base_address_1(RFduinoGZLL_device_base_address) )
 		return 6;
   }
