@@ -56,11 +56,15 @@ RFduinoGZLLClass::RFduinoGZLLClass()
   ::RFduinoGZLL_used = 1;
 
 	txPowerLevel = +4;
+	hostBaseAddress = 0U;
+	deviceBaseAddress = 0U;
 }
 
 int RFduinoGZLLClass::begin(device_t device)
 {
   RFduinoGZLL_tx_power_level = txPowerLevel;
+  RFduinoGZLL_host_base_address   = hostBaseAddress;
+  RFduinoGZLL_device_base_address = deviceBaseAddress;
 
   return RFduinoGZLL_begin(device);
 }
