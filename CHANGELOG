@@ -1,5 +1,8 @@
 CHANGELOG
 
+v 2.2.4
+  - Reduce compile times with Arduino 1.6 on second and subsequent compiles.
+
 v 2.2.3
   - GZLL baseAddress enhancement (thanks waynek/jetty840)
   - Check base address msb is not 0x55 or 0xaa
