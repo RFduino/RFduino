@@ -3,6 +3,7 @@
 # ------------------------- 
 
 name=RFduino Boards
+version=2.2.4
 compiler.path={runtime.ide.path}/hardware/tools/gcc-arm-none-eabi-4.8.3-2014q1/bin/
 compiler.c.cmd=arm-none-eabi-gcc
 compiler.c.flags=-c -g -Os -w -ffunction-sections -fdata-sections -fno-builtin -MMD
