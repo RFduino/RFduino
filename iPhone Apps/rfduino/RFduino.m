@@ -90,7 +90,6 @@ static void incrementUuid16(CBUUID *uuid, unsigned char amount)
 @synthesize peripheral;
 
 @synthesize name;
-@synthesize UUID;
 @synthesize advertisementData;
 @synthesize advertisementRSSI;
 @synthesize advertisementPackets;

@@ -55,7 +55,6 @@ extern NSString *customUUID;
 @property(strong, nonatomic) RFduinoManager *rfduinoManager;
 
 @property(strong, nonatomic) NSString *name;
-@property(strong, nonatomic) NSString *UUID;
 @property(strong, nonatomic) NSData *advertisementData;
 @property(strong, nonatomic) NSNumber *advertisementRSSI;
 @property(assign, nonatomic) NSInteger advertisementPackets;
