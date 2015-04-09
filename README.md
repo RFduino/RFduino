@@ -10,7 +10,7 @@
 
 * Download [Arduino 1.5](http://arduino.cc/en/Main/Software).
   * _If you're on OSX_: Remember to open Arduino _first_ to make gatekeeper perform its magic!
-
+  * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
 * Copy the Arduino library into the appropriate directory for your system. (Folder should be named ```RFduino```, not ```RFduino-master```):
   ![location](docs.png)
   * _Windows_:
