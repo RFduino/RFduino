@@ -8,7 +8,7 @@
 
 * Get the [RFduino hardware](http://RFduino.com).
 
-* Download [Arduino 1.5](http://arduino.cc/en/Main/Software).
+* Download [Arduino 1.5](http://arduino.cc/en/Main/OldSoftwareReleases) (The latest version, 1.6.3, is not compatible at this time).
   * _If you're on OSX_: Remember to open Arduino _first_ to make gatekeeper perform its magic!
 
 * Copy the Arduino library into the appropriate directory for your system. (Folder should be named ```RFduino```, not ```RFduino-master```):
