@@ -98,16 +98,9 @@ static CBUUID *service_uuid;
             
     }
 
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth LE Support"
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-
-#endif
+    if ([delegate respondsToSelector:@selector(shouldDisplayAlertTitled:messageBody:)]) {
+        [delegate shouldDisplayAlertTitled:@"Bluetooth LE Support" messageBody:message];
+    }
 
     return NO;
 }
@@ -193,16 +186,9 @@ static CBUUID *service_uuid;
     if (error.code) {
         cancelBlock = block;
 
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Peripheral Disconnected with Error"
-                                                        message:error.description
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        
-#endif
+        if ([delegate respondsToSelector:@selector(shouldDisplayAlertTitled:messageBody:)]) {
+            [delegate shouldDisplayAlertTitled:@"Peripheral Disconnected with Error" messageBody:error.description];
+        }
         
     }
     else
@@ -229,9 +215,9 @@ static CBUUID *service_uuid;
     // NSLog(@"didDiscoverPeripheral");
 
     NSString *uuid = NULL;
-    if (peripheral.UUID) {
+    if ([peripheral.identifier.UUIDString length] > 0) {
         // only returned if you have connected to the device before
-        uuid = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, peripheral.UUID);
+        uuid = peripheral.identifier.UUIDString;
     } else {
         uuid = @"";
     }
@@ -259,7 +245,7 @@ static CBUUID *service_uuid;
     id manufacturerData = [advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey];
     if (manufacturerData) {
         const uint8_t *bytes = [manufacturerData bytes];
-        int len = [manufacturerData length];
+        NSUInteger len = [manufacturerData length];
         // skip manufacturer uuid
         NSData *data = [NSData dataWithBytes:bytes+2 length:len-2];
         rfduino.advertisementData = data;
@@ -283,17 +269,9 @@ static CBUUID *service_uuid;
 {
     NSLog(@"didFailToConnectPeripheral");
 
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connect Failed"
-                                                    message:error.description
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-
-#endif
-
+    if ([delegate respondsToSelector:@selector(shouldDisplayAlertTitled:messageBody:)]) {
+        [delegate shouldDisplayAlertTitled:@"Connect Failed" messageBody:error.description];
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals
@@ -302,26 +280,13 @@ static CBUUID *service_uuid;
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)aCentral
 {
-    NSLog(@"central manager state = %d", [central state]);
+    NSLog(@"central manager state = %ld", [central state]);
     
     bool success = [self isBluetoothLESupported];
     if (success) {
         [self startScan];
     }
 }
-
-#pragma mark - UIAlertViewDelegate methods
-
-#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger) buttonIndex
-{
-    if (buttonIndex == 0) {
-        cancelBlock();
-    }
-}
-
-#endif
 
 #pragma mark - Rfduino methods
 
