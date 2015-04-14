@@ -109,10 +109,10 @@ uint32_t analogRead(uint32_t ulPin)
               (analog_reference     << ADC_CONFIG_REFSEL_Pos)|    // DEFAULT: Use supply voltage with 1/3 prescaling as reference for conversion. Only usable when supply voltage is between 2.5V and 3.6V
               (pselValue        << ADC_CONFIG_PSEL_Pos)|    // Select ADC input
               (ADC_CONFIG_EXTREFSEL_None  << ADC_CONFIG_EXTREFSEL_Pos);
-		NRF_ADC->INTENCLR = 0xFFFFFFFF;
-		NRF_ADC->ENABLE = 	(ADC_ENABLE_ENABLE_Enabled 		<< ADC_ENABLE_ENABLE_Pos);		// Enable ADC
-		NRF_ADC->TASKS_START = 	1;															// Start A-D conversion
-    NRF_ADC->EVENTS_END = 0;
+	NRF_ADC->INTENCLR = 0xFFFFFFFF;
+	NRF_ADC->ENABLE = 	(ADC_ENABLE_ENABLE_Enabled 		<< ADC_ENABLE_ENABLE_Pos);		// Enable ADC
+    NRF_ADC->EVENTS_END = 0;															// Reset end flag
+	NRF_ADC->TASKS_START = 	1;															// Start A-D conversion
     while (! NRF_ADC->EVENTS_END)  // Wait for end of conversion
       ;
 		ulValue = NRF_ADC->RESULT;															// Read the value
