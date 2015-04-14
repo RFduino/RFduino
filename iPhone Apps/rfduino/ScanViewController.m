@@ -132,9 +132,6 @@
     if (rfduino.outOfRange) {
         start = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.8];
         stop = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:0.2];
-    } else if (! rfduino.UUID.length) {
-        start = [UIColor colorWithRed:224/255.0 green:242/255.0 blue:224/255.0 alpha: 1.0];
-        stop = [UIColor colorWithRed:224/255.0 green:242/255.0 blue:224/255.0 alpha: 0.7];
     } else {
         start = [UIColor colorWithRed:253/255.0 green:255/255.0 blue:255/255.0 alpha: 1.0];
         stop = [UIColor colorWithRed:253/255.0 green:255/255.0 blue:255/255.0 alpha: 0.7];
@@ -146,8 +143,6 @@
     cell.backgroundView = ccb;
     
     NSString *text = [[NSString alloc] initWithFormat:@"%@", rfduino.name];
-    
-    NSString *uuid = rfduino.UUID;
     
     int rssi = rfduino.advertisementRSSI.intValue;
 
@@ -162,7 +157,6 @@
         [detail appendString:@" "];
     [detail appendFormat:@"Packets: %d\n", rfduino.advertisementPackets];
     [detail appendFormat:@"Advertising: %@\n", advertising];
-    [detail appendFormat:@"%@", uuid];
     
     cell.textLabel.text = text;
     cell.detailTextLabel.text = detail;

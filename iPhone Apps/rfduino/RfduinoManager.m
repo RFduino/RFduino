@@ -214,14 +214,6 @@ static CBUUID *service_uuid;
 {
     // NSLog(@"didDiscoverPeripheral");
 
-    NSString *uuid = NULL;
-    if ([peripheral.identifier.UUIDString length] > 0) {
-        // only returned if you have connected to the device before
-        uuid = peripheral.identifier.UUIDString;
-    } else {
-        uuid = @"";
-    }
-    
     bool added = false;
 
     RFduino *rfduino = [self rfduinoForPeripheral:peripheral];
@@ -231,7 +223,6 @@ static CBUUID *service_uuid;
         rfduino.rfduinoManager = self;
 
         rfduino.name = peripheral.name;
-        rfduino.UUID = uuid;
         
         rfduino.peripheral = peripheral;
         
