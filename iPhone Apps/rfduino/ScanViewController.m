@@ -270,6 +270,20 @@
 
 #pragma mark - RfduinoDiscoveryDelegate methods
 
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+
+- (void)shouldDisplayAlertTitled:(NSString *)title messageBody:(NSString *)body
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title
+                                                    message:body
+                                                    delegate:nil
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil];
+    [alert show];
+}
+
+#endif
+
 - (void)didDiscoverRFduino:(RFduino *)rfduino
 {
     NSLog(@"didDiscoverRFduino");
