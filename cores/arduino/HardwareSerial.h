@@ -52,9 +52,9 @@
 class HardwareSerial : public Stream
 {
   public:
-	void begin( const uint32_t dwBaudRate ) ;
-    void begin( const uint32_t dwBaudRate, uint8_t rx_pin, uint8_t tx_pin  ) ;
-    void end();
+    virtual void begin( const uint32_t dwBaudRate ) = 0;
+    virtual void begin( const uint32_t dwBaudRate, uint8_t rx_pin, uint8_t tx_pin  ) = 0;
+    virtual void end() = 0;
     virtual int available(void) = 0;
     virtual int peek(void) = 0;
     virtual int read(void) = 0;
