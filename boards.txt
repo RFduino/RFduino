@@ -1,5 +1,6 @@
 
 RFduino.name=RFduino
+RFduino.build.board=RFduino
 RFduino.build.mcu=cortex-m0
 RFduino.build.f_cpu=16000000
 RFduino.build.core=arduino

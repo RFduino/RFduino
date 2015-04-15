@@ -1,5 +1,14 @@
 CHANGELOG
 
+v 2.3
+  - Fixes required to support Arduino 1.6.3
+    (NOTE: Arduino 1.6.3 or higher is now required for RFduino 2.3 or above).
+  - Include explicit information about Java 6 (thanks  gortok)
+  - fixing analogRead freeze problem + fixing indentation (thanks OrenLederman)
+  - Removing deprecated field in iOS framework and sample projects (thanks SensiBots)
+  - make these virtual (thanks  tripzero)
+  - Remove dependence on UIKit; fix use of deprecated UUID attribute (thanks aeberbach)
+
 v 2.2.4
   - Reduce compile times with Arduino 1.6 on second and subsequent compiles.
 

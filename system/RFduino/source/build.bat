@@ -1,18 +1,20 @@
 @echo off
 
-set arduino=C:\arduino-1.5.7
-
-cd %arduino%\hardware\arduino\RFduino\system\RFduino\source
-
 if not exist _build\nul mkdir _build
 if exist _build\* del /q _build\*
 
-set tools=%arduino%\hardware\tools\gcc-arm-none-eabi-4.8.3-2014q1
-set RFduino=%arduino%\hardware\arduino\RFduino
+set package=%appdata%\Arduino15\packages\RFduino
 
-set gcc=%tools%\bin\arm-none-eabi-gcc
-set ar=%tools%\bin\arm-none-eabi-ar
-set nm=%tools%\bin\arm-none-eabi-nm
+set base=%package%\hardware\RFduino
+dir /b %base% >%temp%\ver.txt
+set /p ver= <%temp%\ver.txt
+set base=%base%\%ver%
+
+set toolchain=%package%\tools\arm-none-eabi-gcc\4.8.3-2014q1
+
+set gcc=%toolchain%\bin\arm-none-eabi-gcc
+set ar=%toolchain%\bin\arm-none-eabi-ar
+set nm=%toolchain%\bin\arm-none-eabi-nm
 
 set includes=-I../include
 set includes=%includes% -I../../CMSIS/CMSIS/Include
@@ -39,8 +41,8 @@ for %%f in (%objs%) do %ar% rcs _build\%output% %%f
 %nm% _build\%output% >_build\%output%.txt
 
 echo copying libray and txt to variants...
-copy _build\%output% %RFduino%\variants\RFduino\%output%
-copy _build\%output%.txt %RFduino%\variants\RFduino\%output%.txt
+copy _build\%output% %base%\variants\RFduino\%output%
+copy _build\%output%.txt %base%\variants\RFduino\%output%.txt
 
 :end
 pause

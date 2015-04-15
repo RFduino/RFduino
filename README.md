@@ -8,19 +8,19 @@
 
 * Get the [RFduino hardware](http://RFduino.com).
 
-* Download [Arduino 1.5](http://arduino.cc/en/Main/Software).
-  * _If you're on OSX_: Remember to open Arduino _first_ to make gatekeeper perform its magic!
-  * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
-* Copy the Arduino library into the appropriate directory for your system. (Folder should be named ```RFduino```, not ```RFduino-master```):
-  ![location](docs.png)
-  * _Windows_:
-    * ```C:\arduino-1.5.4\hardware\arduino```
-  * _OSX, Arduino 1.5.8_:
-    * ```/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino```
-
 * Install the [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm).
 
-You're ready to go!
+* Download [Arduino 1.6.3](http://arduino.cc/en/Main/Software) on newer.
+  * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
+
+* Open Arduino
+  * edit preferences, and add rfduino.com as the Server (HTTP) under Proxy Settings and save.
+      ![preferences](preferences.png)
+  * Open the Boards Manager under Tools->Board menu.
+  * Select the RFduino package at the end of the list, and click Install to install it.
+  * Your new board will no show up in the Tools->Board menu.
+
+Select the board and port, and you're ready to go!
 
 Detailed instructions are available in our [Quick Start Guide](http://files.rfdigital.com/rfduino.quick.start.guide.pdf).
 
@@ -45,10 +45,6 @@ Detailed instructions are available in our [Quick Start Guide](http://files.rfdi
 The best way to communiate with us is on the [RFduino Forum](http://forum.RFduino.com).
 
 ### A Lot More Coming!
-
-We are working on documentation as fast as we can.  Until then, the best source for documentation is the sketch examples.
-
-This project has been a huge success, and we have many exciting things planned that we want to share with the community.  At the same time, we are unbelievable busy, with a ton going on and lots of small items to clean up.  We are just a small team working on this project ... please bear with us!
 
 We hope you enjoy creating stuff with your RFduino as much as we do!
 

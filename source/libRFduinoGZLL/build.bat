@@ -1,6 +1,5 @@
 @echo off
 
-set arduino=C:\arduino-1.5.8
 set nordic="C:\Nordic Semiconductor\nRF51 SDK_v4.2.0.25053\Nordic\nrf51822"
 
 if not exist %nordic% (
@@ -8,16 +7,20 @@ echo Error: The Nordic SDK is required to build libRFduinoGZLL.
 goto end
 )
 
-cd %arduino%\hardware\arduino\RFduino\source\libRFduinoGZLL
-
 if not exist _build\nul mkdir _build
 if exist _build\* del /q _build\*
 
-set tools=%arduino%\hardware\tools\gcc-arm-none-eabi-4.8.3-2014q1
-set RFduino=%arduino%\hardware\arduino\RFduino
+set package=%appdata%\Arduino15\packages\RFduino
 
-set gcc=%tools%\bin\arm-none-eabi-gcc
-set ar=%tools%\bin\arm-none-eabi-ar
+set base=%package%\hardware\RFduino
+dir /b %base% >%temp%\ver.txt
+set /p ver= <%temp%\ver.txt
+set base=%base%\%ver%
+
+set toolchain=%package%\tools\arm-none-eabi-gcc\4.8.3-2014q1
+
+set gcc=%toolchain%\bin\arm-none-eabi-gcc
+set ar=%toolchain%\bin\arm-none-eabi-ar
 
 set includes=-I%nordic%\Include
 set includes=%includes% -I%nordic%\Include\gzll
@@ -51,8 +54,8 @@ set objs=%objs% _build\nrf_state_machine.o
 for %%f in (%objs%) do %ar% rcs _build/libRFduinoGZLL.a %%f
 
 echo copying libray and header to variants...
-copy _build\libRFduinoGZLL.a %RFduino%\variants\RFduino\libRFduinoGZLL.a
-copy libRFduinoGZLL.h %RFduino%\variants\RFduino\libRFduinoGZLL.h
+copy _build\libRFduinoGZLL.a %base%\variants\RFduino\libRFduinoGZLL.a
+copy libRFduinoGZLL.h %base%\variants\RFduino\libRFduinoGZLL.h
 
 :end
 pause
