@@ -18,7 +18,7 @@
       ![preferences](preferences.png)
   * Open the Boards Manager under Tools->Board menu.
   * Select the RFduino package at the end of the list, and click Install to install it.
-  * Your new board will no show up in the Tools->Board menu.
+  * Your new board will now show up in the Tools->Board menu.
 
 Select the board and port, and you're ready to go!
 
