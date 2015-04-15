@@ -44,8 +44,4 @@ Detailed instructions are available in our [Quick Start Guide](http://files.rfdi
 
 The best way to communiate with us is on the [RFduino Forum](http://forum.RFduino.com).
 
-### A Lot More Coming!
-
-We hope you enjoy creating stuff with your RFduino as much as we do!
-
 The RFduino team.
