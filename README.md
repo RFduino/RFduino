@@ -43,5 +43,3 @@ Detailed instructions are available in our [Quick Start Guide](http://files.rfdi
 # Communicating with us
 
 The best way to communiate with us is on the [RFduino Forum](http://forum.RFduino.com).
-
-The RFduino team.
