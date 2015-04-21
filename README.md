@@ -57,7 +57,7 @@ sudo usermod -aG dialout <username>
 
 ## RFduinoApps
 
-Check out the [RFduinoApps](http://github/RFduino/RFduinoApps) repository for iPhone App source code & RFduino to Raspberry Pi integration projects.
+Check out the [RFduinoApps](http://github.com/RFduino/RFduinoApps) repository for iPhone App source code & RFduino to Raspberry Pi integration projects.
 
 # Communicating with us
 
