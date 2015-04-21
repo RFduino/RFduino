@@ -24,6 +24,23 @@ Select the board and port, and you're ready to go!
 
 Detailed instructions are available in our [Quick Start Guide](http://files.rfdigital.com/rfduino.quick.start.guide.pdf).
 
+## Linux
+
+```
+// FTDI drivers are not needed (they are built into the kernel)
+wget http://downloads.arduino.cc/arduino-1.6.3-linux64.tar.xz
+tar -xf arduino-1.6.3-linux64.tar.xz
+```
+
+Ubuntu: sudo apt-get install default-jre
+Fedora: sudo yum install jre
+OpenSUSE: sudo zypper install jre
+
+```
+// otherwise the com port open will fail with permission denied (you must logout/login for change to take effect)
+sudo usermod -aG dialout <username>
+```
+
 ## Getting Started
 
 * Attach the USB shield
@@ -39,6 +56,10 @@ Detailed instructions are available in our [Quick Start Guide](http://files.rfdi
 * Download the iPhone example apps from the iPhone App Store (search for ```RFduino```).
     * Detailed instructions for the Temperature app are available [here](http://files.rfdigital.com/rfduino.temperature.guide.pdf).
     * Detailed instructions for the ColorWheel app are available [here](http://files.rfdigital.com/rfduino.rgb.colorwheel.guide.pdf).
+
+## RFduinoApps
+
+Check out the [RFduinoApps](http://github/RFduino/RFduinoApps) repository for iPhone App source code & RFduino to Raspberry Pi integration projects.
 
 # Communicating with us
 

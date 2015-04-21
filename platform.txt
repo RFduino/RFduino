@@ -2,8 +2,15 @@
 # RFduino compile variables
 # ------------------------- 
 
-name=RFduino Boards
+# arduino 1.6.1
+#compiler.path={runtime.ide.path}/hardware/tools/gcc-arm-none-eabi-4.8.3-2014q1/bin/
+#tools.RFDLoader.path={runtime.ide.path}/hardware/arduino/RFduino
+
+# arduino 1.6.3
 compiler.path={runtime.tools.arm-none-eabi-gcc.path}/bin/
+tools.RFDLoader.path={runtime.tools.RFDLoader.path}
+
+name=RFduino Boards
 compiler.c.cmd=arm-none-eabi-gcc
 compiler.c.flags=-c -g -Os -w -ffunction-sections -fdata-sections -fno-builtin -MMD
 compiler.c.elf.cmd=arm-none-eabi-g++
@@ -60,9 +67,12 @@ recipe.hooks.postbuild.0.pattern=
 # RFduino Uploader tools
 # ----------------------
 
-tools.RFDLoader.cmd=RFDLoader
 tools.RFDLoader.cmd.windows=RFDLoader.exe
+tools.RFDLoader.cmd.macosx=RFDLoader_osx
+#tools.RFDLoader.cmd.macosx=RFDLoader32_osx
+tools.RFDLoader.cmd.linux=RFDLoader_linux
+#tools.RFDLoader.cmd.linux=RFDLoader32_linux
+#tools.RFDLoader.cmd.linux=RFDLoader_pi
 tools.RFDLoader.upload.params.verbose=
 tools.RFDLoader.upload.params.quiet=
-tools.RFDLoader.path={runtime.tools.RFDLoader.path}
 tools.RFDLoader.upload.pattern="{path}/{cmd}" -q {serial.port} "{build.path}/{build.project_name}.hex"
