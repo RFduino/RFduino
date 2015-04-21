@@ -30,13 +30,11 @@ Detailed instructions are available in our [Quick Start Guide](http://files.rfdi
 // FTDI drivers are not needed (they are built into the kernel)
 wget http://downloads.arduino.cc/arduino-1.6.3-linux64.tar.xz
 tar -xf arduino-1.6.3-linux64.tar.xz
-```
 
 Ubuntu: sudo apt-get install default-jre
 Fedora: sudo yum install jre
 OpenSUSE: sudo zypper install jre
 
-```
 // otherwise the com port open will fail with permission denied (you must logout/login for change to take effect)
 sudo usermod -aG dialout <username>
 ```
