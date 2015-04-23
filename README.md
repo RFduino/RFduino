@@ -22,8 +22,6 @@
 
 Select the board and port, and you're ready to go!
 
-Detailed instructions are available in our [Quick Start Guide](http://files.rfdigital.com/rfduino.quick.start.guide.pdf).
-
 ## Linux
 
 ```
