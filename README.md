@@ -14,17 +14,18 @@
   * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
 
 * Open Arduino
-  * Arduino may not start properly if another version has been previously installed and the Preferences are incompatible.  You can reset the Preferences by deleting the following directory:
-    * _Windows_: %appdata%/Arduino15 (open File Explorer, enter %appdata% into the Address Bar and press Enter)
-    * _Mac OS X_: ~/Library/Arduino15 (open Finder, and ```Go->Go to Folder```)
-    * _Linux_: ~/.arduino15
-  * Edit Preferences, and add http://rfduino.com/package_rfduino_index.json to Additional Board Manager URLs and save.
+  * Edit Preferences, and add ```http://rfduino.com/package_rfduino_index.json``` to Additional Board Manager URLs and save.
       ![preferences](preferences.png)
   * Open the Boards Manager under ```Tools->Board``` menu.
   * Select the RFduino package at the end of the list, and click Install to install it.
   * Your new board will now show up in the ```Tools->Board``` menu.
 
 Select the board and port, and you're ready to go!
+
+<strong>Note</strong>: Arduino may not start properly if another version has been previously installed and the Preferences are incompatible.  You can reset the Preferences by deleting the following directory:
+* _Windows_: %appdata%/Arduino15 (open File Explorer, enter %appdata% into the Address Bar and press Enter)
+* _Mac OS X_: ~/Library/Arduino15 (open Finder, and ```Go->Go to Folder```)
+* _Linux_: ~/.arduino15
 
 ## Linux
 
