@@ -10,15 +10,19 @@
 
 * Install the [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm).
 
-* Download [Arduino 1.6.3](http://arduino.cc/en/Main/Software) on newer.
+* Download [Arduino 1.6.4](http://arduino.cc/en/Main/Software) or newer.
   * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
 
 * Open Arduino
-  * edit preferences, and add rfduino.com as the Server (HTTP) under Proxy Settings and save.
+  * Arduino may not start properly if another version has been previously installed and the Preferences are incompatible.  You can reset the Preferences by deleting the following directory:
+    * _Windows_: %appdata%/Arduino15 (open File Explorer, enter %appdata% into the Address Bar and press Enter)
+    * _Mac OS X_: ~/Library/Arduino15 (open Finder, and ```Go->Go to Folder```)
+    * _Linux_: ~/.arduino15
+  * Edit Preferences, and add http://rfduino.com/package_rfduino_index.json to Additional Board Manager URLs and save.
       ![preferences](preferences.png)
-  * Open the Boards Manager under Tools->Board menu.
+  * Open the Boards Manager under ```Tools->Board``` menu.
   * Select the RFduino package at the end of the list, and click Install to install it.
-  * Your new board will now show up in the Tools->Board menu.
+  * Your new board will now show up in the ```Tools->Board``` menu.
 
 Select the board and port, and you're ready to go!
 
@@ -26,6 +30,7 @@ Select the board and port, and you're ready to go!
 
 ```
 // FTDI drivers are not needed (they are built into the kernel)
+
 wget http://downloads.arduino.cc/arduino-1.6.3-linux64.tar.xz
 tar -xf arduino-1.6.3-linux64.tar.xz
 
@@ -41,11 +46,11 @@ sudo usermod -aG dialout <username>
 
 * Attach the USB shield
 
-* Select RFduino from the ```Tools/Board``` menu
+* Select RFduino from the ```Tools->Board``` menu
 
-* Select the port from the ```Tools/Port``` menu
+* Select the port from the ```Tools->Port``` menu
 
-* Select an example from the ```Files/Examples/RFduinoNonBLE``` or ```Files/Examples/RFduinoBLE``` directory
+* Select an example from the ```File->Examples->RFduinoNonBLE``` or ```File->Examples-?RFduinoBLE``` directory
 
 * Select ```Upload``` to compile, upload and execute the sketch
 
