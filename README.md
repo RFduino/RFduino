@@ -4,6 +4,10 @@
 
 [Video](http://www.youtube.com/watch?v=arWBdGwCJcM)  
 
+## Communicating with us
+
+The best way to communiate with us is on the [RFduino Forum](http://forum.RFduino.com).
+
 ## Installation
 
 * Get the [RFduino hardware](http://RFduino.com).
@@ -62,7 +66,3 @@ sudo usermod -aG dialout <username>
 ## RFduinoApps
 
 Check out the [RFduinoApps](http://github.com/RFduino/RFduinoApps) repository for iPhone App source code & RFduino to Raspberry Pi integration projects.
-
-# Communicating with us
-
-The best way to communiate with us is on the [RFduino Forum](http://forum.RFduino.com).
