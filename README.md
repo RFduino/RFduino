@@ -14,11 +14,11 @@ The best way to communiate with us is on the [RFduino Forum](http://forum.RFduin
 
 * Install the [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm).
 
-* Download [Arduino 1.6.4](http://arduino.cc/en/Main/Software) or newer.
+* Download [Arduino 1.6.6](http://arduino.cc/en/Main/Software) or newer.
   * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
 
 * Open Arduino
-  * Edit Preferences, and add ```http://rfduino.com/package_rfduino_index.json``` to Additional Board Manager URLs and save.
+  * Edit Preferences, and add ```http://rfduino.com/package_rfduino166_index.json``` to Additional Board Manager URLs and save.
       ![preferences](preferences.png)
   * Open the Boards Manager under ```Tools->Board``` menu.
   * Select the RFduino package at the end of the list, and click Install to install it.
@@ -36,8 +36,8 @@ Select the board and port, and you're ready to go!
 ```
 // FTDI drivers are not needed (they are built into the kernel)
 
-wget http://downloads.arduino.cc/arduino-1.6.3-linux64.tar.xz
-tar -xf arduino-1.6.3-linux64.tar.xz
+wget http://downloads.arduino.cc/arduino-1.6.6-linux64.tar.xz
+tar -xf arduino-1.6.6-linux64.tar.xz
 
 Ubuntu: sudo apt-get install default-jre
 Fedora: sudo yum install jre
