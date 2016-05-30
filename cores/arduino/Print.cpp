@@ -346,6 +346,9 @@ size_t Print::printf(const char *format, ...)
         if (l < 1)
           l = -l;
         l %= 100;
+        if(l < 10){
+         n += print(0);
+        }
         n += print(l);
       }
     }
