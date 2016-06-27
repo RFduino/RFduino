@@ -48,6 +48,10 @@ int flashPageErase( uint8_t page )
   if (page <= PAGE_FROM_ADDRESS(&_etextrelocate))
     return 2;
 
+  // do not erase flash if the BLE radio is active
+  while (RFduinoBLE_radioActive)
+    ;
+
   // enable flash page erase
   NRF_NVMC->CONFIG = (NVMC_CONFIG_WEN_Een << NVMC_CONFIG_WEN_Pos);
   while (NRF_NVMC->READY == NVMC_READY_READY_Busy)
@@ -79,7 +83,7 @@ int flashWrite( uint32_t *address, uint32_t value )
   if (page <= PAGE_FROM_ADDRESS(&_etextrelocate))
     return 2;
 
-  // do not write to flash in the BLE radio is active
+  // do not write to flash if the BLE radio is active
   while (RFduinoBLE_radioActive)
     ;
 
