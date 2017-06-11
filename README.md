@@ -16,6 +16,7 @@ The best way to communiate with us is on the [RFduino Forum](http://forum.RFduin
 
 * Download [Arduino 1.6.6](http://arduino.cc/en/Main/Software) or newer.
   * _Mac OS X_: Requires Java 6 to be installed. Available [here](https://support.apple.com/kb/DL1572?locale=en_US).
+  * Note: The default Package in Ubuntu 16.04 is to old 1.5.3 and does not support adding hardware support.
 
 * Open Arduino
   * Edit Preferences, and add ```http://rfduino.com/package_rfduino166_index.json``` to Additional Board Manager URLs and save.
