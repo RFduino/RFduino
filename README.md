@@ -6,11 +6,11 @@
 
 ## Communicating with us
 
-The best way to communiate with us is on the [RFduino Forum](http://forum.RFduino.com).
+The best way to communiate with us is on the [RFduino Forum](https://web.archive.org/web/2017/http://forum.RFduino.com) (obsolete) or [Arduino Forum](https://forum.arduino.cc).
 
 ## Installation
 
-* Get the [RFduino hardware](http://RFduino.com).
+* Get the [RFduino hardware](https://web.archive.org/web/2017/http://www.rfduino.com/) (obsolete).
 
 * Install the [FTDI drivers](http://www.ftdichip.com/Drivers/VCP.htm).
 
@@ -19,7 +19,7 @@ The best way to communiate with us is on the [RFduino Forum](http://forum.RFduin
   * Note: The default Package in Ubuntu 16.04 is to old 1.5.3 and does not support adding hardware support.
 
 * Open Arduino
-  * Edit Preferences, and add ```http://rfduino.com/package_rfduino166_index.json``` to Additional Board Manager URLs and save.
+  * Edit Preferences, and add ```https://gist.githubusercontent.com/Alkarex/6b9a7f2e311805b6e238419e145b6c67/raw/6014fe42f7e06dae483af633d6e81a30e0521183/package_rfduino166_index.json``` to Additional Board Manager URLs and save.
       ![preferences](preferences.png)
   * Open the Boards Manager under ```Tools->Board``` menu.
   * Select the RFduino package at the end of the list, and click Install to install it.
@@ -61,8 +61,8 @@ sudo usermod -aG dialout <username>
 * Select ```Upload``` to compile, upload and execute the sketch
 
 * Download the iPhone example apps from the iPhone App Store (search for ```RFduino```).
-    * Detailed instructions for the Temperature app are available [here](http://files.rfdigital.com/rfduino.temperature.guide.pdf).
-    * Detailed instructions for the ColorWheel app are available [here](http://files.rfdigital.com/rfduino.rgb.colorwheel.guide.pdf).
+    * Detailed instructions for the Temperature app are available [here](https://web.archive.org/web/2014/http://files.rfdigital.com/rfduino.temperature.guide.pdf).
+    * Detailed instructions for the ColorWheel app are available [here](https://web.archive.org/web/2014/http://files.rfdigital.com/rfduino.rgb.colorwheel.guide.pdf).
 
 ## RFduinoApps
 
