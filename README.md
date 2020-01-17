@@ -19,7 +19,7 @@ The best way to communiate with us is on the [RFduino Forum](https://web.archive
   * Note: The default Package in Ubuntu 16.04 is to old 1.5.3 and does not support adding hardware support.
 
 * Open Arduino
-  * Edit Preferences, and add ```https://gist.githubusercontent.com/Alkarex/6b9a7f2e311805b6e238419e145b6c67/raw/6014fe42f7e06dae483af633d6e81a30e0521183/package_rfduino166_index.json``` to Additional Board Manager URLs and save.
+  * Edit Preferences, and add ```https://gist.githubusercontent.com/Alkarex/6b9a7f2e311805b6e238419e145b6c67/raw/0fa858b8c60b9cdddcce2d5c501eca3f866ed62b/package_rfduino166_index.json``` to Additional Board Manager URLs and save.
       ![preferences](preferences.png)
   * Open the Boards Manager under ```Tools->Board``` menu.
   * Select the RFduino package at the end of the list, and click Install to install it.
